@@ -1,0 +1,13 @@
+.header__navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__navigation_list {
+  display: flex;
+  list-style-type: none;
+}
+
+.header__navigation_list-item {
+  margin-right: 30px;
+}
