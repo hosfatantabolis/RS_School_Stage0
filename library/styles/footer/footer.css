@@ -1,0 +1,31 @@
+.footer {
+  background-color: #0c0c0e;
+  color: #ffffff;
+}
+.footer__icons {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__links {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.footer__link {
+  text-decoration: none;
+}
+.footer__link:visited {
+  color: #ffffff;
+  text-decoration: none;
+}

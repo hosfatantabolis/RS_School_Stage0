@@ -1,1 +1,23 @@
 @import url(./header/header.css);
+@import url(./welcome/welcome.css);
+@import url(./about/about.css);
+@import url(./favorites/favorites.css);
+@import url(./coffeeshop/coffeeshop.css);
+@import url(./contacts/contacts.css);
+@import url(./librarycard/librarycard.css);
+@import url(./footer/footer.css);
+
+.wrapper {
+  background-color: #fff;
+}
+section {
+  margin: 0 20px;
+}
+.section__title {
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}

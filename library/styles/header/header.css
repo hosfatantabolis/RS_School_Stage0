@@ -11,3 +11,6 @@
 .header__navigation_list-item {
   margin-right: 30px;
 }
+.header__navigation_list-item:last-of-type {
+  margin: 0;
+}

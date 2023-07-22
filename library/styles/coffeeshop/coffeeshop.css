@@ -1,0 +1,25 @@
+.coffeshop__columns {
+  display: flex;
+}
+.coffeshop__list_item {
+  display: flex;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  width: 438px;
+  justify-content: space-between;
+}
+.coffeshop__list_menu-item {
+  display: inline-block;
+}
+.coffeshop__list_menu-divider {
+  border-top: 1px solid;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.coffeshop__list_menu-price {
+}
