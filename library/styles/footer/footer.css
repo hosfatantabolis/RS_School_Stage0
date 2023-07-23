@@ -28,6 +28,11 @@
   margin-bottom: 18px;
 }
 
+.footer__address_link{
+  text-decoration: none;
+  color: inherit;
+}
+
 .footer__links {
   display: flex;
   list-style-type: none;
