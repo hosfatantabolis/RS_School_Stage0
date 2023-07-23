@@ -78,6 +78,10 @@
   position: relative;
 }
 
+.favorites__grid_card-spring, .favorites__grid_card-summer, .favorites__grid_card-autumn{
+  display: none;
+}
+
 .card__label {
   font-family: Forum;
   font-size: 20px;
