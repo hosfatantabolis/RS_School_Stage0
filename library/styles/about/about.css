@@ -36,6 +36,19 @@
   background-color: #0c0c0e;
   border-radius: 50%;
   margin-right: 10px;
+  position: relative;
+}
+.about__list_slider-dot::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: -5px;
+  left: -5px;
+}
+.about__list_slider-dot:hover {
+  cursor: pointer;
+  background-color: #c5934d;
 }
 .about__list_slider-dot:last-of-type {
   margin-right: 0;
