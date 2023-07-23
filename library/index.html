@@ -37,7 +37,10 @@
     </header>
     <main>
       <section class="welcome">
-        <h1 class="welcome__title">Welcome</br> to the Brooklyn Library</h1>
+        <h1 class="welcome__title">
+          Welcome<br />
+          to the Brooklyn Library
+        </h1>
       </section>
       <section class="about" id="about">
         <h2 class="section__title about__title">About</h2>
@@ -80,26 +83,51 @@
         <h2 class="section__title favorites__title">Favorites</h2>
         <fieldset class="favorites__pick">
           <h3 class="favorites__pick_title">Pick favorites of season</h3>
-          <form class="favorites__form">    
-          <div class="favorites__input_wrapper">
-              <input class="favorites__input" type="radio" id="Winter" name="season" value="Winter" checked>
+          <form class="favorites__form">
+            <div class="favorites__input_wrapper">
+              <input
+                class="favorites__input"
+                type="radio"
+                id="Winter"
+                name="season"
+                value="Winter"
+                checked
+              />
               <label class="favorites__input_label" for="Winter">Winter</label>
-          </div>
-          
-          <div class="favorites__input_wrapper">
-              <input class="favorites__input" type="radio" id="Spring" name="season" value="Spring">
+            </div>
+
+            <div class="favorites__input_wrapper">
+              <input
+                class="favorites__input"
+                type="radio"
+                id="Spring"
+                name="season"
+                value="Spring"
+              />
               <label class="favorites__input_label" for="Spring">Spring</label>
-          </div>
-          
-          <div class="favorites__input_wrapper">
-              <input class="favorites__input" type="radio" id="Summer" name="season" value="Summer">
+            </div>
+
+            <div class="favorites__input_wrapper">
+              <input
+                class="favorites__input"
+                type="radio"
+                id="Summer"
+                name="season"
+                value="Summer"
+              />
               <label class="favorites__input_label" for="Summer">Summer</label>
-          </div>
-          
-          <div class="favorites__input_wrapper">
-              <input class="favorites__input" type="radio" id="Autumn" name="season" value="Autumn">
+            </div>
+
+            <div class="favorites__input_wrapper">
+              <input
+                class="favorites__input"
+                type="radio"
+                id="Autumn"
+                name="season"
+                value="Autumn"
+              />
               <label class="favorites__input_label" for="Autumn">Autumn</label>
-          </div>
+            </div>
           </form>
         </fieldset>
         <div class="favorites__grid">
@@ -115,7 +143,7 @@
               the faint of heart.
             </p>
             <button class="card__button">Buy</button>
-            <img 
+            <img
               class="card__image"
               src="./assets/images/favorites_images/the_book_eaters.jpg"
               alt="The Book Eaters cover"
@@ -178,12 +206,12 @@
         <h2 class="section__title coffeshop__title">Coffee shop</h2>
         <p class="coffeshop__text">
           In our library, we have of cozy coffee shop, welcoming in customers
-          with frothy cappuccinos and friendly conversation. you can get a
+          with frothy cappuccinos and friendly conversation. You can get a
           favorite book and read in coffee shop. Our barista to cook you best
           coffee, and also you can try desserts from bakery.
         </p>
         <div class="coffeshop__columns">
-          <div class="coffeshop__column">
+          <div class="coffeshop__column coffeshop__column-left">
             <h4 class="coffeshop__column_title">Coffee & Tea</h4>
             <ul class="coffeshop__list">
               <li class="coffeshop__list_item">
@@ -219,7 +247,7 @@
             </ul>
           </div>
 
-          <div class="coffeshop__column">
+          <div class="coffeshop__column coffeshop__column-right">
             <h4 class="coffeshop__column_title">Desserts & Cakes</h4>
             <ul class="coffeshop__list">
               <li class="coffeshop__list_item">
@@ -294,24 +322,41 @@
       <section class="librarycard" id="librarycard">
         <h2 class="section__title contacts__title">Digital Library Cards</h2>
         <div class="librarycard__columns">
-          <div class="librarycard__column">
+          <div class="librarycard__column librarycard__column_form">
+            <h3 class="librarycard__title librarycard__form_title">
+              Find your Library card
+            </h3>
             <form class="librarycard__form">
-              <h3 class="librarycard__title librarycard__form_title">
-                Find your Library card
-              </h3>
-              <input type="text" placeholder="Reader's name" />
-              <input type="text" placeholder="Card number" />
-              <input type="submit" value="Check the card" />
+              <div class="librarycard__form_wrapper">
+                <h4 class="librarycard__form_subtitle">
+                  Brooklyn Public Library
+                </h4>
+                <input
+                  class="librarycard__form_input"
+                  type="text"
+                  placeholder="Reader's name"
+                />
+                <input
+                  class="librarycard__form_input"
+                  type="text"
+                  placeholder="Card number"
+                />
+              </div>
+              <input
+                class="librarycard__form_button"
+                type="submit"
+                value="Check the card"
+              />
             </form>
           </div>
-          <div class="librarycard__column">
+          <div class="librarycard__column librarycard__column_sign">
             <h3 class="librarycard__title">Get a reader card</h3>
             <p class="librarycard__text">
               You will be able to see a reader card after logging into account
               or you can register a new account
             </p>
-            <button>Sign Up</button>
-            <button>Log in</button>
+            <button class="librarycard__button">Sign Up</button>
+            <button class="librarycard__button">Log in</button>
           </div>
         </div>
       </section>
