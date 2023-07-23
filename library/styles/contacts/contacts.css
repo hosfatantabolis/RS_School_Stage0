@@ -35,6 +35,15 @@
   margin-bottom: 0;
 }
 
-.contacts__column_text-emph {
+.contacts__column_mail {
   font-weight: 700;
+}
+
+.contacts__phone, .contacts__column_mail{
+  text-decoration: none;
+  color: inherit;
+}
+.contacts__phone:hover, .contacts__column_mail:hover{
+  text-decoration: underline;
+  color: #BB945F;
 }
