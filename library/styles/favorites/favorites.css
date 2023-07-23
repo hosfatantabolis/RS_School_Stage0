@@ -27,7 +27,9 @@
   font-weight: 400;
   line-height: normal;
 }
-
+.favorites__input_label:hover{
+  cursor: pointer;
+}
 .favorites__input:checked + .favorites__input_label {
   font-weight: 700;
   box-sizing: border-box;
@@ -157,7 +159,17 @@
   left: 20px;
 }
 
+.card__button:hover:not(.card__button-own){
+  cursor: pointer;
+  border-color: #BB945F;
+  background-color: #BB945F;
+}
+
 .card__button-own {
   color: #bb945f;
   border-color: #bb945f;
+}
+
+.card__button-own:hover {
+  cursor: initial;
 }
