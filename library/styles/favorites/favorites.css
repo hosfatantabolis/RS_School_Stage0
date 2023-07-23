@@ -68,7 +68,7 @@
   grid-template-columns: repeat(2, auto);
   grid-column-gap: 220px;
   grid-row-gap: 40px;
-  padding: 40px 0;
+  padding: 40px 40px 0 0;
 }
 
 .favorites__grid_card {

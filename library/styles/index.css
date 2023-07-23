@@ -38,6 +38,11 @@ html{scroll-behavior:smooth}
   font-family: Inter;
   box-sizing: border-box;
 }
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 section {
   padding: 0 20px;
 }
