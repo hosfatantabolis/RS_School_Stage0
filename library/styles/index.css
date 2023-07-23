@@ -1,0 +1,70 @@
+@import url(./header/header.css);
+@import url(./welcome/welcome.css);
+@import url(./about/about.css);
+@import url(./favorites/favorites.css);
+@import url(./coffeeshop/coffeeshop.css);
+@import url(./contacts/contacts.css);
+@import url(./librarycard/librarycard.css);
+@import url(./footer/footer.css);
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter/Inter-Bold.woff2') format('woff2'),
+    url('../assets/fonts/Inter/Inter-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter/Inter-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Inter/Inter-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Forum';
+  src: url('../assets/fonts/Forum/Forum.woff2') format('woff2'),
+    url('../assets/fonts/Forum/Forum.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html{scroll-behavior:smooth}
+
+.wrapper {
+  background-color: #ffffff;
+  font-family: Inter;
+  box-sizing: border-box;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section {
+  padding: 0 20px;
+}
+.section__title {
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  margin: 0;
+  padding-top: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; /*position the underline using left and bottom property*/
+  left: calc(50% - 24px);
+  width: 50px; /* adjust the width of underline as you like*/
+  border-bottom: 1px solid #0c0c0e;
+}

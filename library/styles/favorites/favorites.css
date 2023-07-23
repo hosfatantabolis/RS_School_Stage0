@@ -1,0 +1,176 @@
+.favorites__pick {
+  border: none;
+  padding: 0;
+}
+
+.favorites__pick_title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 61px 0 40px 0;
+}
+
+.favorites__form {
+  display: flex;
+  align-items: center;
+}
+
+.favorites__input_wrapper {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  margin: 0 90px 0 0;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.favorites__input_label:hover{
+  cursor: pointer;
+}
+.favorites__input:checked + .favorites__input_label {
+  font-weight: 700;
+  box-sizing: border-box;
+}
+.favorites__input {
+  display: none;
+}
+.favorites__input_label::before {
+  content: '';
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  top: 5px;
+  margin: 0 20px 0 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 11px;
+  border: 2px solid #000000;
+  background-color: transparent;
+}
+
+.favorites__input:checked + .favorites__input_label:after {
+  border-radius: 11px;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 11px;
+  left: 5px;
+  content: ' ';
+  display: block;
+  background: #000000;
+}
+
+.favorites__grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-column-gap: 220px;
+  grid-row-gap: 40px;
+  padding: 40px 40px 0 0;
+}
+
+.favorites__grid_card {
+  border: 1px solid #000000;
+  padding: 15px 170px 15px 20px;
+  max-width: 550px;
+  min-height: 555px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.favorites__grid_card-spring, .favorites__grid_card-summer, .favorites__grid_card-autumn{
+  display: none;
+}
+
+.card__label {
+  font-family: Forum;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  margin: 0;
+  position: relative;
+}
+.card__label::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /*position the underline using left and bottom property*/
+  left: 0;
+  /* left: calc(50% - 24px); */
+  width: 60px; /* adjust the width of underline as you like*/
+  border-bottom: 1px solid #bb945f;
+}
+
+.card__title,
+.card__author,
+.card__description {
+  font-size: 15px;
+  font-style: normal;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+
+.card__title,
+.card__author {
+  font-weight: 700;
+  margin: 20px 0 0;
+}
+
+.card__title {
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.card__author {
+  margin: 0;
+}
+
+.card__description {
+  text-transform: capitalize;
+  margin: 20px 0 15px;
+}
+
+.card__image {
+  position: absolute;
+  bottom: 0;
+  right: -41px;
+}
+
+.card__button {
+  width: 75px;
+  height: 30px;
+  background-color: #ffffff;
+  border: 1px solid #0c0c0e;
+  border-radius: 2px;
+  color: #0c0c0e;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+}
+
+.card__button:hover:not(.card__button-own){
+  cursor: pointer;
+  border-color: #BB945F;
+  background-color: #BB945F;
+  transition: background-color 500ms linear;
+}
+
+.card__button-own {
+  color: #bb945f;
+  border-color: #bb945f;
+}
+
+.card__button-own:hover {
+  cursor: initial;
+}

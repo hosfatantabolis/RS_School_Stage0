@@ -1,0 +1,122 @@
+.librarycard__columns {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 0;
+  padding-bottom: 38px;
+}
+.librarycard__column_form {
+  min-width: 600px;
+}
+.librarycard__column_sign {
+  text-align: right;
+  max-width: 460px;
+}
+
+.librarycard__title {
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 34px;
+}
+
+.librarycard__form_title {
+  font-family: Inter;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.librarycard__form {
+  border: 3px solid #bb945f;
+  padding: 20px 20px 30px;
+  box-sizing: border-box;
+}
+.librarycard__form_wrapper {
+  padding: 18px 16px 25px;
+  background-color: #bb945f;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.librarycard__form_subtitle {
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 166.667% */
+  letter-spacing: 0.6px;
+  margin: 0 0 20px;
+}
+.librarycard__form_input {
+  box-sizing: border-box;
+  height: 66px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  color: #8e8e8e;
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 166.667% */
+  letter-spacing: 0.6px;
+  margin-bottom: 25px;
+}
+.librarycard__form_input:last-of-type {
+  margin-bottom: 0;
+}
+.librarycard__form_button {
+  display: block;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+  width: 242px;
+  height: 44px;
+  padding: 10px 38px;
+  background-color: #ffffff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  margin: auto;
+}
+.librarycard__text {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 0.4px;
+  margin: 0 0 35px;
+}
+
+.librarycard__button {
+  box-sizing: border-box;
+  width: 75px;
+  height: 30px;
+  background-color: #ffffff;
+  border: 1px solid #0c0c0e;
+  border-radius: 2px;
+  color: #0c0c0e;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  margin-right: 16px;
+  padding: 0;
+}
+.librarycard__button:last-of-type {
+  margin-right: 0;
+}
+
+.librarycard__button:hover, .librarycard__form_button:hover{
+  cursor: pointer;
+  border-color: #BB945F;
+  background-color: #BB945F;
+  transition: background-color 500ms linear;
+}

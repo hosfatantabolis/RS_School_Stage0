@@ -1,0 +1,63 @@
+.coffeshop__text {
+  margin: 61px 0 40px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.coffeshop__columns {
+  display: flex;
+  justify-content: space-between;
+}
+.coffeshop__column-left {
+  text-align: left;
+}
+.coffeshop__column-right {
+  text-align: right;
+}
+.coffeshop__column_title {
+  color: #bb945f;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  margin: 0 0 40px;
+}
+.coffeshop__list {
+  padding: 0;
+  margin: 0;
+  min-width: 438px;
+}
+.coffeshop__column-right > .coffeshop__list {
+  min-width: 460px;
+}
+.coffeshop__list_item {
+  display: flex;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.coffeshop__list_menu-item {
+  display: inline-block;
+  min-width: 210px;
+}
+
+.coffeshop__list_menu-divider {
+  border-top: 1px solid #bb945f;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.coffeshop__list_menu-price {
+  font-family: Forum;
+}
