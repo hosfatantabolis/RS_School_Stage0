@@ -48,7 +48,8 @@
 }
 .about__list_slider-dot:hover {
   cursor: pointer;
-  background-color: #c5934d;
+  background-color: #BB945F;
+  transition: background-color 200ms linear;
 }
 .about__list_slider-dot:last-of-type {
   margin-right: 0;

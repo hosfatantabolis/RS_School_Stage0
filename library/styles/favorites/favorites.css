@@ -163,6 +163,7 @@
   cursor: pointer;
   border-color: #BB945F;
   background-color: #BB945F;
+  transition: background-color 500ms linear;
 }
 
 .card__button-own {
