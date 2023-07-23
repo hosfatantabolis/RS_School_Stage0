@@ -2,6 +2,8 @@
   background-color: #0c0c0e;
   color: #ffffff;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .header__logo {
   font-family: 'Forum';
@@ -11,6 +13,9 @@
   line-height: 50px; /* 166.667% */
   letter-spacing: 0.6px;
   margin: 0;
+}
+.header__column{
+  display: flex;
 }
 .header__navigation {
   display: flex;
@@ -34,11 +39,13 @@
   margin-right: 30px;
 }
 .header__navigation_list-item:last-of-type {
-  margin: 0 0 0 10px;
+  margin: 0 10px 0 0;
   display: flex;
   justify-content: center;
 }
-
+.header__user-icon{
+  margin-left: 30px;
+}
 .header__navigation_link {
   color: #ffffff;
   text-decoration: none;
