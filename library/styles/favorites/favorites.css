@@ -65,8 +65,9 @@
 
 .favorites__grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-column-gap: 220px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 550px);
+  grid-column-gap: 260px;
   grid-row-gap: 40px;
   padding: 40px 40px 0 0;
 }

@@ -44,7 +44,9 @@ html{scroll-behavior:smooth}
   align-items: center;
 }
 section {
-  padding: 0 20px;
+  padding: 20px 20px 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .section__title {
   font-family: Forum;
@@ -55,7 +57,7 @@ section {
   letter-spacing: 2px;
   text-transform: capitalize;
   margin: 0;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   text-align: center;
   position: relative;
 }
