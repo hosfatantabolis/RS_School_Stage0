@@ -10,6 +10,8 @@
 .coffeshop__columns {
   display: flex;
   justify-content: space-between;
+  max-width: 1440px;
+  margin: auto;
 }
 .coffeshop__column-left {
   text-align: left;
@@ -46,6 +48,9 @@
   text-transform: capitalize;
   justify-content: space-between;
   margin-bottom: 40px;
+}
+.coffeshop__list_item:last-of-type{
+  margin-bottom: 0;
 }
 .coffeshop__list_menu-item {
   display: inline-block;

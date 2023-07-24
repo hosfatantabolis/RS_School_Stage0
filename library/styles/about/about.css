@@ -8,6 +8,7 @@
 }
 .about__list_slider {
   display: flex;
+  justify-content: center;
   max-height: 560px;
   max-width: 100%;
   list-style-type: none;
@@ -31,7 +32,7 @@
 .about__list_slider-dots {
   display: flex;
   justify-content: center;
-  margin: 40px 0;
+  margin: 40px 0 0;
 }
 .about__list_slider-dot {
   width: 16px;
