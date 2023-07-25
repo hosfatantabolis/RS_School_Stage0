@@ -37,6 +37,7 @@ html{scroll-behavior:smooth}
   background-color: #ffffff;
   font-family: Inter;
   box-sizing: border-box;
+  min-width: 1000px;
 }
 .main{
   display: flex;
