@@ -68,6 +68,10 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .coffeshop{
+    padding-left: 18px;
+    padding-right: 18px;
+  }
   .coffeshop__columns{
     flex-direction: column;
   }
