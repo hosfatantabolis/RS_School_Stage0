@@ -1,9 +1,12 @@
 .header {
+  box-sizing: border-box;
   background-color: #0c0c0e;
   color: #ffffff;
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  max-width: 1500px;
+  margin: auto;
 }
 .header__logo {
   font-family: 'Forum';
