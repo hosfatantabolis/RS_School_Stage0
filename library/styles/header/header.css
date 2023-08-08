@@ -49,6 +49,9 @@
 .header__user-icon:hover{
   cursor: pointer;
 }
+.header__burger-icon{
+  display: none;
+}
 .header__navigation_link {
   color: #ffffff;
   text-decoration: none;
@@ -56,4 +59,17 @@
 
 .header__navigation_link:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+  .header__navigation{
+    display: none;
+  }
+  .header__burger-icon{
+    display: block;
+  }
+  .header__user-icon{
+    margin-left: 0;
+    margin-right: 40px;
+  }
 }
