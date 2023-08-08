@@ -62,3 +62,15 @@
 .about__list_slider-dot_active {
   background-color: #bb945f;
 }
+
+@media screen and (max-width: 1024px) {
+  .about__list_slider-item:not(:first-of-type){
+    display: none;
+  }
+  .about__list_slider-item{
+    margin-right: 0;
+  }
+  .about__list_slider-dots{
+    margin-top: 25px;
+  }
+}
