@@ -16,6 +16,10 @@
   padding: 0;
 }
 
+.about__arrow{
+  display: none;
+}
+
 .about__slider_image {
   width: 100%;
   height: 100%;
@@ -68,9 +72,21 @@
     display: none;
   }
   .about__list_slider-item{
-    margin-right: 0;
+    margin:  0 48px ;
   }
   .about__list_slider-dots{
     margin-top: 25px;
+  }
+  .about__arrow{
+    display: block;
+    margin-top: 42px;
+  }
+  .about__arrow:hover{
+    cursor: pointer;
+  }
+  .about__wrapper{
+    display: flex;
+    justify-content: center;
+    margin: auto;
   }
 }
