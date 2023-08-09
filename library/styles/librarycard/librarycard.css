@@ -140,4 +140,11 @@
   .librarycard__title:not(.librarycard__form_title){
     margin: 20px 0 38px 0;
   }
+  
+}
+
+@media screen and (max-width: 700px) {
+  .librarycard__column_form {
+    min-width: none;
+  }
 }
