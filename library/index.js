@@ -1,3 +1,47 @@
 console.log(
   'Самопроверка:\nВёрстка валидная +10\nВёрстка семантическая +16\nВёрстка соответствует макету +54\nОбщие требования к верстке +20'
 );
+
+let height = window.innerHeight;
+let width = window.innerWidth;
+const sideMenu = document.getElementById('header-menu');
+const sideMenuButton = document.getElementById('header-menu-button');
+const sideMenuCloseButton = document.getElementById('header-menu-close-button');
+window.addEventListener('resize', resizeWindow, true);
+
+function addClasses() {
+  sideMenuButton.classList.add('header__burger-icon_hidden');
+  sideMenuCloseButton.classList.add('header__burger-close_visible');
+  sideMenu.classList.add('header__navigation-visible');
+  document.body.addEventListener('wheel', preventScroll, { passive: false });
+}
+function removeClasses() {
+  sideMenu.classList.remove('header__navigation-visible');
+  sideMenuButton.classList.remove('header__burger-icon_hidden');
+  sideMenuCloseButton.classList.remove('header__burger-close_visible');
+  document.body.removeEventListener('wheel', preventScroll, { passive: false });
+}
+
+sideMenuButton.addEventListener('click', () => {
+  addClasses();
+});
+
+sideMenuCloseButton.addEventListener('click', () => {
+  removeClasses();
+});
+
+function resizeWindow() {
+  height = window.innerHeight;
+  width = window.innerWidth;
+  if (width <= 1024) {
+    removeClasses();
+  }
+}
+
+//window.onresize = reportWindowSize;
+
+function preventScroll(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}
