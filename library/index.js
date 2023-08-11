@@ -7,6 +7,11 @@ let width = window.innerWidth;
 const sideMenu = document.getElementById('header-menu');
 const sideMenuButton = document.getElementById('header-menu-button');
 const sideMenuCloseButton = document.getElementById('header-menu-close-button');
+let links = sideMenu.querySelectorAll('a');
+links.forEach((link) => {
+  link.addEventListener('click', removeClasses);
+});
+console.log(links);
 window.addEventListener('resize', resizeWindow, true);
 
 function addClasses() {
@@ -20,6 +25,7 @@ function removeClasses() {
   sideMenuButton.classList.remove('header__burger-icon_hidden');
   sideMenuCloseButton.classList.remove('header__burger-close_visible');
   document.body.removeEventListener('wheel', preventScroll, { passive: false });
+  link.removeEventListener('click', removeClasses);
 }
 
 sideMenuButton.addEventListener('click', () => {
@@ -37,8 +43,6 @@ function resizeWindow() {
     removeClasses();
   }
 }
-
-//window.onresize = reportWindowSize;
 
 function preventScroll(e) {
   e.preventDefault();
