@@ -4,37 +4,42 @@ console.log(
 
 let height = window.innerHeight;
 let width = window.innerWidth;
+
 const sideMenu = document.getElementById('header-menu');
 const sideMenuButton = document.getElementById('header-menu-button');
 const sideMenuCloseButton = document.getElementById('header-menu-close-button');
 let links = sideMenu.querySelectorAll('a');
+
 links.forEach((link) => {
   link.addEventListener('click', removeClasses);
 });
-console.log(links);
+
 window.addEventListener('resize', resizeWindow, true);
+function eventHandler(e) {
+  if (!sideMenu.contains(e.target) && e.target !== sideMenuButton) {
+    console.log('1');
+    removeClasses();
+  }
+}
 
 function addClasses() {
   sideMenuButton.classList.add('header__burger-icon_hidden');
   sideMenuCloseButton.classList.add('header__burger-close_visible');
   sideMenu.classList.add('header__navigation-visible');
   document.body.addEventListener('wheel', preventScroll, { passive: false });
+  document.addEventListener('click', eventHandler);
 }
 function removeClasses() {
   sideMenu.classList.remove('header__navigation-visible');
   sideMenuButton.classList.remove('header__burger-icon_hidden');
   sideMenuCloseButton.classList.remove('header__burger-close_visible');
   document.body.removeEventListener('wheel', preventScroll, { passive: false });
-  link.removeEventListener('click', removeClasses);
+  document.removeEventListener('click', eventHandler);
 }
 
-sideMenuButton.addEventListener('click', () => {
-  addClasses();
-});
+sideMenuButton.addEventListener('click', addClasses);
 
-sideMenuCloseButton.addEventListener('click', () => {
-  removeClasses();
-});
+sideMenuCloseButton.addEventListener('click', removeClasses);
 
 function resizeWindow() {
   height = window.innerHeight;
