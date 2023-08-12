@@ -17,7 +17,6 @@ links.forEach((link) => {
 window.addEventListener('resize', resizeWindow, true);
 function eventHandler(e) {
   if (!sideMenu.contains(e.target) && e.target !== sideMenuButton) {
-    console.log('1');
     removeClasses();
   }
 }
