@@ -1,9 +1,12 @@
 .header {
+  box-sizing: border-box;
   background-color: #0c0c0e;
   color: #ffffff;
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  max-width: 1500px;
+  margin: auto;
 }
 .header__logo {
   font-family: 'Forum';
@@ -16,6 +19,7 @@
 }
 .header__column{
   display: flex;
+  align-items: center;
 }
 .header__navigation {
   display: flex;
@@ -45,9 +49,12 @@
 }
 .header__user-icon{
   margin-left: 30px;
+  width: 28px;
+  height: 28px;
 }
-.header__user-icon:hover{
-  cursor: pointer;
+
+.header__burger-icon{
+  display: none;
 }
 .header__navigation_link {
   color: #ffffff;
@@ -56,4 +63,69 @@
 
 .header__navigation_link:hover {
   text-decoration: underline;
+}
+
+.header__user-icon:hover, .header__burger-icon:hover, .header__close-icon:hover {
+  cursor: pointer;
+  filter: invert(68%) sepia(18%) saturate(971%) hue-rotate(355deg) brightness(87%) contrast(84%);
+  transition: filter 500ms linear;
+}
+
+.header__side-menu{
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0; 
+}
+
+.header__close-icon{
+  display: none;
+  width: 45px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .header{
+    position: relative;
+  }
+ 
+  .header__burger-icon{
+    display: block;
+    z-index: 3;
+  }
+  .header__user-icon{
+    margin-left: 0;
+    margin-right: 40px;
+    z-index: 3;
+  }
+
+  .header__navigation_list{
+    display: block;
+    position: fixed;
+    z-index: 2;
+    right: -100%;
+    top: 0; 
+    width: 332px;
+    height: 570px;
+    background-color: #0c0c0e;
+    text-align: center;
+    padding: 100px;
+    box-sizing: border-box;
+    transition: 0.7s ease;
+  }
+  .header__navigation-visible{
+    right: 0;
+  }
+  .header__navigation_list-item, .header__navigation_list-item:last-of-type {
+    margin-right: 0;
+    display: block;
+    min-width: 132px;
+  }
+  .header__burger-close_visible{
+    display: block;
+    z-index: 3;
+  }
+  .header__burger-icon_hidden{
+    display: none;
+  }
 }

@@ -27,6 +27,9 @@
   font-weight: 400;
   line-height: normal;
 }
+.favorites__input_wrapper:last-of-type {
+  margin: 0;
+}
 .favorites__input_label:hover{
   cursor: pointer;
 }
@@ -174,4 +177,12 @@
 
 .card__button-own:hover {
   cursor: initial;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .favorites__grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }

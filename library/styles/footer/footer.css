@@ -2,6 +2,8 @@
   padding: 20px 20px 44px;
   background-color: #0c0c0e;
   color: #ffffff;
+  max-width: 1500px;
+  margin: auto;
 }
 .footer__icons {
   display: flex;

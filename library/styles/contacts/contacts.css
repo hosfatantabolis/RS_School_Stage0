@@ -48,3 +48,19 @@
   text-decoration: underline;
   color: #BB945F;
 }
+
+@media screen and (max-width: 1024px) {
+  .contacts__columns{
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .contacts__column_tels{
+    margin-bottom: 82px;
+  }
+  .contacts__column_map{
+    margin: auto;
+    aspect-ratio: 1.75;
+    width: 100%;
+    height: 100%;
+  }
+}

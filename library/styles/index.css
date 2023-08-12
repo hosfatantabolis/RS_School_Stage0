@@ -47,6 +47,7 @@ html{scroll-behavior:smooth}
 section {
   padding: 20px 20px 40px;
   width: 100%;
+  max-width: 1500px;
   box-sizing: border-box;
 }
 .section__title {
@@ -70,4 +71,10 @@ section {
   left: calc(50% - 24px);
   width: 50px; /* adjust the width of underline as you like*/
   border-bottom: 1px solid #0c0c0e;
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    min-width: 100%;
+  }
 }
