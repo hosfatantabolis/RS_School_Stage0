@@ -66,3 +66,22 @@
 .coffeshop__list_menu-price {
   font-family: Forum;
 }
+
+@media screen and (max-width: 1024px) {
+  .coffeshop{
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .coffeshop__columns{
+    flex-direction: column;
+  }
+  .coffeshop__list{
+    max-width: 438px;
+  }
+  .coffeshop__column-left {
+    margin-bottom: 40px;
+  }
+  .coffeshop__column-right{
+    margin-left: auto;
+  }
+}

@@ -12,8 +12,8 @@
     <header class="header">
       <h1 class="header__logo">Brooklyn Public Library</h1>
       <div class="header__column">
-        <nav class="header__navigation">
-          <ul class="header__navigation_list">
+        <nav class="header__navigation" >
+          <ul class="header__navigation_list" id="header-menu">
             <li class="header__navigation_list-item">
               <a class="header__navigation_link" href="#about">About</a>
             </li>
@@ -33,7 +33,10 @@
             </li>
           </ul>
         </nav>
+        
         <img class="header__user-icon" src="./assets/images/icon_profile.svg" alt="profile icon" >
+        <img class="header__burger-icon" src="./assets/images/icon_burger.svg" alt="burger menu icon" id="header-menu-button" >
+        <img class="header__close-icon" src="./assets/images/icon_close.svg" alt="burger menu close icon" id="header-menu-close-button" >
       </div>
     </header>
     <main class="main">
@@ -49,35 +52,42 @@
           The Brooklyn Library is a free workspace, a large number of books and
           a cozy coffee shop inside
         </p>
-        <ul class="about__list_slider">
-          <li class="about__list_slider-item">
-            <img
-              class="about__slider_image"
-              src="./assets/images/about_images/img1_girl.jpg"
-              alt="girl"
-            >
-          </li>
-          <li class="about__list_slider-item">
-            <img
-              class="about__slider_image"
-              src="./assets/images/about_images/img2_gallery.jpg"
-              alt="gallery"
-            >
-          </li>
-          <li class="about__list_slider-item">
-            <img
-              class="about__slider_image"
-              src="./assets/images/about_images/img3_library.jpg"
-              alt="library"
-            >
-          </li>
-        </ul>
+        <div class="about__wrapper">
+          <img class="about__arrow about__arrow_left" src="./assets/images/arrow_left.svg" alt="arrow left" >
+          <ul class="about__list_slider">
+            <li class="about__list_slider-item">
+              <img
+                class="about__slider_image"
+                src="./assets/images/about_images/img1_girl.jpg"
+                alt="girl"
+              >
+            </li>
+            <li class="about__list_slider-item">
+              <img
+                class="about__slider_image"
+                src="./assets/images/about_images/img2_gallery.jpg"
+                alt="gallery"
+              >
+            </li>
+            <li class="about__list_slider-item">
+              <img
+                class="about__slider_image"
+                src="./assets/images/about_images/img3_library.jpg"
+                alt="library"
+              >
+            </li>
+          </ul>
+          <img class="about__arrow about__arrow_right" src="./assets/images/arrow_right.svg" alt="arrow right" >
+        </div>
+        
         <div class="about__list_slider-dots">
           <div
             class="about__list_slider-dot about__list_slider-dot_active"
           ></div>
           <div class="about__list_slider-dot"></div>
           <div class="about__list_slider-dot"></div>
+          <div class="about__list_slider-dot about__list_slider-dot-hidden"></div>
+          <div class="about__list_slider-dot about__list_slider-dot-hidden"></div>
         </div>
       </section>
       <section class="favorites" id="favorites">
@@ -195,7 +205,7 @@
               family) exploring how the Windsors have evolved and thrived as the
               modern world has changed around them.
             </p>
-            <button class="card__button card__button-own">Own</button>
+            <button class="card__button card__button-own" disabled>Own</button>
             <img
               class="card__image"
               src="./assets/images/favorites_images/queen.jpg"
@@ -460,7 +470,7 @@
       <section class="contacts" id="contacts">
         <h2 class="section__title contacts__title">Our Contacts</h2>
         <div class="contacts__columns">
-          <div class="contacts__column">
+          <div class="contacts__column contacts__column_tels">
             <h3 class="contacts__column_title">For all Library inquiries:</h3>
             <ul class="contacts__column_list">
               <li class="contacts__column_list-item">
@@ -481,7 +491,7 @@
           </div>
           <!-- <div class="contacts__column">map</div> -->
           <iframe
-            class="contacts__column"
+            class="contacts__column contacts__column_map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.015975743674!2d-73.9912976!3d40.6956458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a49b649b8c3%3A0x6342a2291cea2e!2zMjg2IENhZG1hbiBQbGF6YSBXLCBCcm9va2x5biwgTlkgMTEyMDEsINCh0KjQkA!5e0!3m2!1sru!2sru!4v1690035052920!5m2!1sru!2sru"
             width="696"
             height="414"

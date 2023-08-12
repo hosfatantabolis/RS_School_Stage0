@@ -120,3 +120,31 @@
   background-color: #BB945F;
   transition: background-color 500ms linear;
 }
+
+@media screen and (max-width: 1024px) {
+  .librarycard__columns{
+    flex-direction: column;
+  }
+  .librarycard__column_form{
+    margin: auto;
+    max-width: 600px;
+  }
+  .librarycard__column_sign{
+    max-width: 100%;
+    text-align: center;
+  }
+  .librarycard__text{
+    margin: 0 auto 40px;
+    max-width: 600px;
+  }
+  .librarycard__title:not(.librarycard__form_title){
+    margin: 20px 0 38px 0;
+  }
+  
+}
+
+@media screen and (max-width: 700px) {
+  .librarycard__column_form {
+    min-width: none;
+  }
+}
