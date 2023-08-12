@@ -46,6 +46,9 @@
   margin-right: 10px;
   position: relative;
 }
+.about__list_slider-dot-hidden{
+  display: none;
+}
 .about__list_slider-dot::after {
   content: '';
   position: absolute;
@@ -76,6 +79,9 @@
   }
   .about__list_slider-dots{
     margin-top: 25px;
+  }
+  .about__list_slider-dot-hidden{
+    display: block;
   }
   .about__arrow{
     display: block;
