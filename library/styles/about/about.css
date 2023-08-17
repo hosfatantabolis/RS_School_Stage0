@@ -27,6 +27,7 @@
 }
 .about__list_slider-item {
   margin-right: 25px;
+  opacity: 1;
 }
 
 .about__list_slider-item:last-of-type {
@@ -68,14 +69,20 @@
 
 .about__list_slider-dot_active {
   background-color: #bb945f;
+  transition: background-color 0.5s linear;
 }
 
 @media screen and (max-width: 1024px) {
-  .about__list_slider-item:not(:first-of-type){
+  .about__list_slider-item:last-of-type {
+    margin-right: 48px;
+  }
+  .about__list_slider-item-hidden{
     display: none;
+    opacity: 0;
   }
   .about__list_slider-item{
     margin:  0 48px ;
+    animation: fade 1s linear;
   }
   .about__list_slider-dots{
     margin-top: 25px;
@@ -94,5 +101,14 @@
     display: flex;
     justify-content: center;
     margin: auto;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
   }
 }
