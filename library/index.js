@@ -10,7 +10,6 @@ console.log(
 let height = window.innerHeight;
 let width = window.innerWidth;
 let isScreenWide = width > 1024 ? true : false;
-console.log(isScreenWide);
 
 const sideMenu = document.getElementById('header-menu');
 const sideMenuButton = document.getElementById('header-menu-button');
@@ -42,7 +41,6 @@ function removeClasses() {
   document.body.removeEventListener('wheel', preventScroll, { passive: false });
   document.removeEventListener('click', eventHandler);
   isScreenWide = false;
-  console.log(isScreenWide);
 }
 
 sideMenuButton.addEventListener('click', addClasses);
@@ -50,32 +48,24 @@ sideMenuButton.addEventListener('click', addClasses);
 sideMenuCloseButton.addEventListener('click', removeClasses);
 
 function resizeWindow() {
+  currentPosition = 0;
   height = window.innerHeight;
   width = window.innerWidth;
   sliderWidth = slider.offsetWidth;
-  console.log(sliderWidth);
+  renderSlide(currentPosition);
+  initArrows(currentPosition);
+  initDots(currentPosition);
   if (width <= 1024) {
     removeClasses(); // убираем бургер-меню
-    initArrows(currentPosition);
-    initDots(currentPosition);
     slides.forEach((slide) => {
       slide.style.width = '';
     });
-    renderSlide(currentPosition);
   }
   if (width > 1024) {
     isScreenWide = true;
-    // console.log(currentPosition)
     slides.forEach((slide) => {
       slide.style.width = (sliderWidth - 40) / 3 + 'px';
     });
-    console.log(isScreenWide);
-    if (currentPosition > 3) {
-      currentPosition = 0;
-      initDots(currentPosition);
-      initArrows(currentPosition);
-      renderSlide(currentPosition);
-    }
   }
 }
 
@@ -94,7 +84,6 @@ const slides = document.querySelectorAll('.about__slider_image');
 const slider = document.querySelector('.about__slider');
 const sliderInside = document.querySelector('.about__list_slider');
 let sliderWidth = slider.offsetWidth;
-console.log(sliderWidth);
 const dots = document.querySelectorAll('.about__list_slider-dot');
 const left_arrow = document.getElementById('about__arrow_left');
 const right_arrow = document.getElementById('about__arrow_right');
@@ -132,15 +121,12 @@ const renderSlide = (currentPosition) => {
     sliderInside.style.transform =
       'translate(-' + (value > 20 ? value : 0) + 'px)';
   } else {
-    // console.log(sliderWidth);
-    initDots(currentPosition);
     sliderInside.style.transform =
       'translate(-' + currentPosition * sliderWidth + 'px)';
   }
 };
 
 right_arrow.addEventListener('click', () => {
-  console.log('CP: ' + currentPosition);
   if (currentPosition < slides.length - 1) {
     currentPosition++;
   }
@@ -153,8 +139,6 @@ left_arrow.addEventListener('click', () => {
   renderSlide(currentPosition);
 });
 dots.forEach((dot, index) => {
-  console.log('index: ' + index);
-  console.log('CP: ' + currentPosition);
   dot.addEventListener('click', () => renderSlide(index));
 });
 
