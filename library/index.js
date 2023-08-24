@@ -52,19 +52,30 @@ sideMenuCloseButton.addEventListener('click', removeClasses);
 function resizeWindow() {
   height = window.innerHeight;
   width = window.innerWidth;
-  // sliderWidth = slider.offsetWidth;
+  sliderWidth = slider.offsetWidth;
+  console.log(sliderWidth);
   if (width <= 1024) {
     removeClasses(); // убираем бургер-меню
-    initArrows();
-    initDots();
+    initArrows(currentPosition);
+    initDots(currentPosition);
+    slides.forEach((slide) => {
+      slide.style.width = '';
+    });
+    renderSlide(currentPosition);
   }
   if (width > 1024) {
     isScreenWide = true;
     // console.log(currentPosition)
+    slides.forEach((slide) => {
+      slide.style.width = (sliderWidth - 40) / 3 + 'px';
+    });
     console.log(isScreenWide);
-    // if (currentPosition === 0 || currentPosition === 5) {
-    //   renderSlide(DOT, currentPosition, isScreenWide);
-    // }
+    if (currentPosition > 3) {
+      currentPosition = 0;
+      initDots(currentPosition);
+      initArrows(currentPosition);
+      renderSlide(currentPosition);
+    }
   }
 }
 
@@ -79,7 +90,7 @@ let currentPosition = 0;
 const NEXT = 'next';
 const PREV = 'prev';
 const DOT = 'dot';
-const slides = document.querySelectorAll('.about__list_slider-item');
+const slides = document.querySelectorAll('.about__slider_image');
 const slider = document.querySelector('.about__slider');
 const sliderInside = document.querySelector('.about__list_slider');
 let sliderWidth = slider.offsetWidth;
@@ -104,8 +115,6 @@ const initArrows = (position) => {
 
 const initDots = (position) => {
   dots.forEach((dot, index) => {
-    // console.log('index: ' + index);
-    // console.log('CP: ' + currentPosition);
     if (index === position) {
       dot.classList.add('about__list_slider-dot_active');
     } else dot.classList.remove('about__list_slider-dot_active');
@@ -116,14 +125,10 @@ initDots(currentPosition);
 initArrows(currentPosition);
 
 const renderSlide = (currentPosition) => {
-  // console.log('render');
-  // initDots();
-  // initArrows();
   initDots(currentPosition);
   initArrows(currentPosition);
   if (isScreenWide) {
-    // slider.style.width = sliderWidth * slides.length + 'px';
-    let value = (currentPosition * sliderWidth) / 3 + 25 / 2;
+    let value = (currentPosition * sliderWidth) / 3;
     sliderInside.style.transform =
       'translate(-' + (value > 20 ? value : 0) + 'px)';
   } else {
