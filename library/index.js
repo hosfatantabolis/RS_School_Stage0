@@ -163,15 +163,32 @@ const SUMMER = 'summer';
 const AUTUMN = 'autumn';
 
 const showSeason = (season) => {
+  setTimeout(() => {
+    allCards.forEach((card) => {
+      if (card.classList.contains('favorites__grid_card-' + season)) {
+        card.style.display = 'block';
+        setTimeout(() => {
+          card.classList.remove('favorites__grid_card-hidden');
+        }, 500);
+      } else {
+        card.classList.add('favorites__grid_card-hidden');
+        setTimeout(() => {
+          card.style.display = 'none';
+        }, 500);
+      }
+    });
+  }, 0);
+};
+
+showSeason(WINTER);
+
+const hideOtherSeasons = (season) => {
   allCards.forEach((card) => {
-    if (card.classList.contains('favorites__grid_card-' + season)) {
-      //setTimeout(function () {
-      card.classList.remove('favorites__grid_card-hidden');
-      //}, 1000);
-    } else {
-      // setTimeout(function () {
+    if (!card.classList.contains('favorites__grid_card-' + season)) {
       card.classList.add('favorites__grid_card-hidden');
-      // }, 1000);
+      setTimeout(() => {
+        card.style.display = 'none';
+      }, 50);
     }
   });
 };
