@@ -9,6 +9,8 @@ console.log(
 //----------------- Side menu -----------------
 let height = window.innerHeight;
 let width = window.innerWidth;
+let isScreenWide = width > 1024 ? true : false;
+console.log(isScreenWide);
 
 const sideMenu = document.getElementById('header-menu');
 const sideMenuButton = document.getElementById('header-menu-button');
@@ -39,6 +41,8 @@ function removeClasses() {
   sideMenuCloseButton.classList.remove('header__burger-close_visible');
   document.body.removeEventListener('wheel', preventScroll, { passive: false });
   document.removeEventListener('click', eventHandler);
+  isScreenWide = false;
+  console.log(isScreenWide);
 }
 
 sideMenuButton.addEventListener('click', addClasses);
@@ -48,8 +52,19 @@ sideMenuCloseButton.addEventListener('click', removeClasses);
 function resizeWindow() {
   height = window.innerHeight;
   width = window.innerWidth;
+  // sliderWidth = slider.offsetWidth;
   if (width <= 1024) {
-    removeClasses();
+    removeClasses(); // убираем бургер-меню
+    initArrows();
+    initDots();
+  }
+  if (width > 1024) {
+    isScreenWide = true;
+    // console.log(currentPosition)
+    console.log(isScreenWide);
+    // if (currentPosition === 0 || currentPosition === 5) {
+    //   renderSlide(DOT, currentPosition, isScreenWide);
+    // }
   }
 }
 
@@ -64,49 +79,115 @@ let currentPosition = 0;
 const NEXT = 'next';
 const PREV = 'prev';
 const DOT = 'dot';
-const slides = document.querySelectorAll(".about__list_slider-item");
-const dots = document.querySelectorAll(".about__list_slider-dot");
+const slides = document.querySelectorAll('.about__list_slider-item');
+const slider = document.querySelector('.about__slider');
+const sliderInside = document.querySelector('.about__list_slider');
+let sliderWidth = slider.offsetWidth;
+console.log(sliderWidth);
+const dots = document.querySelectorAll('.about__list_slider-dot');
 const left_arrow = document.getElementById('about__arrow_left');
 const right_arrow = document.getElementById('about__arrow_right');
 
-
-const renderSlide = (action, index) => {
-  if((index === slides.length-1 && action === NEXT) || (index === 0 && action === PREV)) {
-    alert("OI!")
+const initArrows = (position) => {
+  if (position === 0) {
+    left_arrow.classList.add('about__arrow-inactive');
   } else {
-    if(action===NEXT){
-      slides[index].classList.add("about__list_slider-item-hidden")
-      slides[index+1].classList.remove("about__list_slider-item-hidden")
-      dots[index].classList.remove("about__list_slider-dot_active")
-      dots[index+1].classList.add("about__list_slider-dot_active")
-      currentPosition++
-      
-    }
-    if(action===PREV){
-      slides[index].classList.add("about__list_slider-item-hidden")
-      slides[index-1].classList.remove("about__list_slider-item-hidden")
-      dots[index].classList.remove("about__list_slider-dot_active")
-      dots[index-1].classList.add("about__list_slider-dot_active")
-      currentPosition--
-    }
-    if(action===DOT){
-      slides[currentPosition].classList.add("about__list_slider-item-hidden")
-      slides[index].classList.remove("about__list_slider-item-hidden")
-      dots[currentPosition].classList.remove("about__list_slider-dot_active")
-      dots[index].classList.add("about__list_slider-dot_active")
-      currentPosition=index;
-    }
+    left_arrow.classList.remove('about__arrow-inactive');
   }
-  
-  console.log(currentPosition)
-}
 
-right_arrow.addEventListener('click', ()=> renderSlide(NEXT, currentPosition));
-left_arrow.addEventListener('click',()=>  renderSlide(PREV, currentPosition));
+  if (position === slides.length - 1) {
+    right_arrow.classList.add('about__arrow-inactive');
+  } else {
+    right_arrow.classList.remove('about__arrow-inactive');
+  }
+};
 
-dots.forEach((dot,index)=>{
-  dot.addEventListener('click', ()=>renderSlide(DOT, index))
-})
+const initDots = (position) => {
+  dots.forEach((dot, index) => {
+    // console.log('index: ' + index);
+    // console.log('CP: ' + currentPosition);
+    if (index === position) {
+      dot.classList.add('about__list_slider-dot_active');
+    } else dot.classList.remove('about__list_slider-dot_active');
+  });
+};
 
+initDots(currentPosition);
+initArrows(currentPosition);
 
-console.log(slides)
+const renderSlide = (currentPosition) => {
+  // console.log('render');
+  // initDots();
+  // initArrows();
+  initDots(currentPosition);
+  initArrows(currentPosition);
+  if (isScreenWide) {
+    // slider.style.width = sliderWidth * slides.length + 'px';
+    let value = (currentPosition * sliderWidth) / 3 + 25 / 2;
+    sliderInside.style.transform =
+      'translate(-' + (value > 20 ? value : 0) + 'px)';
+  } else {
+    // console.log(sliderWidth);
+    initDots(currentPosition);
+    sliderInside.style.transform =
+      'translate(-' + currentPosition * sliderWidth + 'px)';
+  }
+};
+
+right_arrow.addEventListener('click', () => {
+  console.log('CP: ' + currentPosition);
+  if (currentPosition < slides.length - 1) {
+    currentPosition++;
+  }
+  renderSlide(currentPosition);
+});
+left_arrow.addEventListener('click', () => {
+  if (currentPosition !== 0) {
+    currentPosition--;
+  }
+  renderSlide(currentPosition);
+});
+dots.forEach((dot, index) => {
+  console.log('index: ' + index);
+  console.log('CP: ' + currentPosition);
+  dot.addEventListener('click', () => renderSlide(index));
+});
+
+//----------------Seasons Slider-------------
+//---cards---
+const winterCards = document.querySelectorAll('.favorites__grid_card-winter');
+const springCards = document.querySelectorAll('.favorites__grid_card-spring');
+const summerCards = document.querySelectorAll('.favorites__grid_card-summer');
+const autumnCards = document.querySelectorAll('.favorites__grid_card-autumn');
+const allCards = document.querySelectorAll('.favorites__grid_card');
+
+//---buttons---
+const winterRadio = document.getElementById('Winter');
+const springRadio = document.getElementById('Spring');
+const summerRadio = document.getElementById('Summer');
+const autumnRadio = document.getElementById('Autumn');
+
+//---constants---
+const WINTER = 'winter';
+const SPRING = 'spring';
+const SUMMER = 'summer';
+const AUTUMN = 'autumn';
+
+const showSeason = (season) => {
+  allCards.forEach((card) => {
+    if (card.classList.contains('favorites__grid_card-' + season)) {
+      //setTimeout(function () {
+      card.classList.remove('favorites__grid_card-hidden');
+      //}, 1000);
+    } else {
+      // setTimeout(function () {
+      card.classList.add('favorites__grid_card-hidden');
+      // }, 1000);
+    }
+  });
+};
+
+winterRadio.addEventListener('click', () => showSeason(WINTER));
+springRadio.addEventListener('click', () => showSeason(SPRING));
+summerRadio.addEventListener('click', () => showSeason(SUMMER));
+autumnRadio.addEventListener('click', () => showSeason(AUTUMN));
