@@ -186,6 +186,12 @@
     grid-template-columns: 1fr;
     justify-items: center;
   }
+  .favorites__pick{
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 999;
+  }
 }
 
 @keyframes fade {
