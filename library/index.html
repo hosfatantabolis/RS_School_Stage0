@@ -575,12 +575,12 @@
               You will be able to see a reader card after logging into account
               or you can register a new account
             </p>
-            <button class="librarycard__button">Sign Up</button>
-            <button class="librarycard__button">Log in</button>
+            <button class="librarycard__button" id="librarycard__registerBtn">Sign Up</button>
+            <button class="librarycard__button" id="librarycard__loginBtn">Log in</button>
           </div>
         </div>
       </section>
-      <div class="popup popup__login">
+      <div class="popup popup__login" id="loginPopup">
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Login</h2>
@@ -599,7 +599,7 @@
         </div>
       </div>
 
-      <div class="popup popup__register">
+      <div class="popup popup__register" id="registerPopup">
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Register</h2>
@@ -614,11 +614,11 @@
             </label>
             <label class="popup__field">
               <span class="popup__field_name">E-mail</span>
-              <input type="email" minlength="2" maxlength="40" id="register-email" class="popup__input popup__input_type_email" required value="">
+              <input type="email" minlength="2" maxlength="100" id="register-email" class="popup__input popup__input_type_email" required value="">
             </label>
             <label class="popup__field">
               <span class="popup__field_name">Password</span>
-              <input type="password" minlength="8" maxlength="200" id="register-password" class="popup__input popup__input_type_password" required value="">
+              <input type="password" minlength="8" maxlength="100" id="register-password" class="popup__input popup__input_type_password" required value="">
             </label>
             <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Sign Up" >Sign Up</button>
             <span class="popup__text">Already have an account? <a class="popup__link">Login</a></span> 
@@ -666,7 +666,7 @@
         </div>
       </div>
 
-      <div class="popup popup__buy popup__open">
+      <div class="popup popup__buy">
         <div class="popup__container popup__container_buy">
           <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
           <h2 class="popup__buy_title">Buy a library card</h2>
