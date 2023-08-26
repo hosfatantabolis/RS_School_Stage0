@@ -614,7 +614,7 @@
             </label>
             <label class="popup__field">
               <span class="popup__field_name">E-mail</span>
-              <input type="email" minlength="2" maxlength="40" id="register-email" class="popup__input popup__input_type_firstName" required value="">
+              <input type="email" minlength="2" maxlength="40" id="register-email" class="popup__input popup__input_type_email" required value="">
             </label>
             <label class="popup__field">
               <span class="popup__field_name">Password</span>
@@ -662,6 +662,49 @@
                 Card number<span class="profile__card_number">F00234030</span>
                 <img class="profile__card_copy-btn" src="./assets/images/icon_copy.svg"></p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup popup__buy popup__open">
+        <div class="popup__container popup__container_buy">
+          <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
+          <h2 class="popup__buy_title">Buy a library card</h2>
+          <div class="popup__buy_columns">
+            <form action="submit" class="popup__form" name="register" novalidate="">
+              <label class="popup__field">
+                <span class="popup__field_name">Bank card number</span>
+                <input type="text" minlength="2" maxlength="40" id="buy-bankcard" class="popup__input popup__input_type_bankcard" required value="">
+              </label>
+              <label class="popup__field">
+                <span class="popup__field_name">Expiration code</span>
+                <input type="text" minlength="2" maxlength="40" id="buy-expcode-month" class="popup__input popup__input_type_expcode popup__input_short" required value="">
+                <input type="text" minlength="2" maxlength="40" id="buy-expcode-year" class="popup__input popup__input_type_expcode popup__input_short" required value="">
+              </label>
+              <label class="popup__field">
+                <span class="popup__field_name">CVC</span>
+                <input type="number" minlength="2" maxlength="40" id="buy-cvc" class="popup__input popup__input_type_cvc popup__input_short" required value="">
+              </label>
+              <label class="popup__field">
+                <span class="popup__field_name">Cardholder name</span>
+                <input type="text" minlength="8" maxlength="200" id="buy-name" class="popup__input popup__input_type_name" required value="">
+              </label>
+              <label class="popup__field">
+                <span class="popup__field_name">Postal code</span>
+                <input type="text" minlength="8" maxlength="200" id="buy-postal" class="popup__input popup__input_type_postal" required value="">
+              </label>
+              <label class="popup__field">
+                <span class="popup__field_name">City / Town</span>
+                <input type="text" minlength="8" maxlength="200" id="buy-city" class="popup__input popup__input_type_city" required value="">
+              </label>
+              <div class="popup__price_container">
+                <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Buy" >Buy</button>
+                <span class="popup__price">$ 25.00</span>
+              </div>
+            </form>
+            <p class="popup__description">
+              If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
+            </p>
           </div>
         </div>
       </div>
