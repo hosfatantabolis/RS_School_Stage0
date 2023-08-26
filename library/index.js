@@ -197,3 +197,36 @@ winterRadio.addEventListener('click', () => showSeason(WINTER));
 springRadio.addEventListener('click', () => showSeason(SPRING));
 summerRadio.addEventListener('click', () => showSeason(SUMMER));
 autumnRadio.addEventListener('click', () => showSeason(AUTUMN));
+
+//----------------Dropdown Menu----------------
+let loggedIn = true;
+let isDropdownMenuShown = false;
+
+const profileBtn = document.getElementById('profileBtn');
+const fullMenu = document.querySelector('.header__dropdown');
+const loggedInMenu = document.querySelector('.header__dropdown_list-loggedIn');
+const notLoggedInMenu = document.querySelector('.header__dropdown_list-notLoggedIn');
+const closeBtns = document.querySelectorAll('.popup__close-btn');
+
+const showMenu = (logged, isDropdownMenuShown) =>{
+  // console.log(fullMenu)
+
+  fullMenu.style.display = "block"
+  if(logged){
+    loggedInMenu.style.display = "block"
+  } else{
+    notLoggedInMenu.style.display = "block"
+  }
+}
+
+const closePopup = (e) => {
+  e.target.closest('.popup').classList.remove('popup__open')
+}
+
+profileBtn.addEventListener('click', ()=>{
+  showMenu(loggedIn)
+})
+
+closeBtns.forEach(button=>{
+  button.addEventListener("click", (e)=> closePopup(e))
+})
