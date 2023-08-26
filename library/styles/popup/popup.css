@@ -36,6 +36,12 @@
     display: block;
 }
 
+.popup__container_buy{
+    width: 650px;
+    padding: 0;
+    display: block;
+}
+
 .popup__close-btn{
     background-image: url(../../assets/images/popup-close_btn.svg);
     background-repeat: no-repeat;
@@ -78,12 +84,14 @@
 }
 
 .popup__field_name{
+    display: inline-block;
+    margin: 0;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; /* 133.333% */
     letter-spacing: 0.3px;
-    margin-bottom: 10px;
+    width: 100%;
 }
 
 .popup__input{
@@ -261,4 +269,65 @@
 
 .profile__card_copy-btn:hover{
     cursor: pointer;
+}
+
+.popup__buy_title{
+    background-color: #0C0C0E;
+    color: #FFF;
+    text-align: center;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 50% */
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.popup__close-btn_profile{
+    background-image: url(../../assets/images/close_btn_white.svg);
+}
+
+.popup__buy_columns{
+    display: flex;
+    padding: 30px 40px 40px;
+}
+
+.popup__description{
+    max-width: 330px;
+    color: #8E8E8E;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+    letter-spacing: 2px;
+    margin: 0 0 0 40px;
+}
+
+.popup__input_short{
+    max-width: 45px;
+    margin-right: 6px;
+    box-sizing: border-box;
+}
+
+#buy-cvc{
+    margin-bottom: 20px;
+}
+
+.popup__price_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup__price{
+    color: #0C0C0E;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px; /* 100% */
+    letter-spacing: 2px;
+    margin: 8px 10px 0 0;
 }
