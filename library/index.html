@@ -639,17 +639,17 @@
               <div class="stats__columns">
                 <div class="stats__column">
                   <h4 class="stats__title">Visits</h4>
-                  <img class="stats__icon" src="./assets/images/icon_visits.svg">
+                  <img class="stats__icon" src="./assets/images/icon_visits.svg" alt="visits icon">
                   <span class="stats__text">23</span>
                 </div>
                 <div class="stats__column">
                   <h4 class="stats__title">Bonuses</h4>
-                  <img class="stats__icon" src="./assets/images/icon_bonuses.svg">
+                  <img class="stats__icon" src="./assets/images/icon_bonuses.svg" alt="bonuses icon">
                   <span class="stats__text">1240</span>
                 </div>
                 <div class="stats__column">
                   <h4 class="stats__title">Books</h4>
-                  <img class="stats__icon" src="./assets/images/icon_books.svg">
+                  <img class="stats__icon" src="./assets/images/icon_books.svg" alt="books icon">
                   <span class="stats__text">2</span>
                 </div>
               </div>
@@ -660,13 +660,13 @@
               </ul>
               <p class="profile__card">
                 Card number<span class="profile__card_number">F00234030</span>
-                <img class="profile__card_copy-btn" src="./assets/images/icon_copy.svg"></p>
+                <img class="profile__card_copy-btn" src="./assets/images/icon_copy.svg" alt="copy icon"></p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="popup popup__buy">
+      <div class="popup popup__buy popup__open">
         <div class="popup__container popup__container_buy">
           <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
           <h2 class="popup__buy_title">Buy a library card</h2>
@@ -674,16 +674,16 @@
             <form action="submit" class="popup__form" name="register" novalidate="">
               <label class="popup__field">
                 <span class="popup__field_name">Bank card number</span>
-                <input type="text" minlength="2" maxlength="40" id="buy-bankcard" class="popup__input popup__input_type_bankcard" required value="">
+                <input type="tel" pattern="\d*" maxlength="19" id="buy-bankcard" class="popup__input popup__input_type_bankcard" required value="">
               </label>
-              <label class="popup__field">
+              <div class="popup__field">
                 <span class="popup__field_name">Expiration code</span>
-                <input type="text" minlength="2" maxlength="40" id="buy-expcode-month" class="popup__input popup__input_type_expcode popup__input_short" required value="">
-                <input type="text" minlength="2" maxlength="40" id="buy-expcode-year" class="popup__input popup__input_type_expcode popup__input_short" required value="">
-              </label>
+                <input type="tel" pattern="\d*" maxlength="2" id="buy-expcode-month" class="popup__input popup__input_type_expcode popup__input_short" required value="">
+                <input type="tel" pattern="\d*" maxlength="2" id="buy-expcode-year" class="popup__input popup__input_type_expcode popup__input_short" required value="">
+              </div>
               <label class="popup__field">
                 <span class="popup__field_name">CVC</span>
-                <input type="number" minlength="2" maxlength="40" id="buy-cvc" class="popup__input popup__input_type_cvc popup__input_short" required value="">
+                <input type="tel" pattern="\d*" maxlength="3" id="buy-cvc" class="popup__input popup__input_type_cvc popup__input_short" required value="">
               </label>
               <label class="popup__field">
                 <span class="popup__field_name">Cardholder name</span>
