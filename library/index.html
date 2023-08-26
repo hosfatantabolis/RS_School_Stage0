@@ -33,10 +33,32 @@
             </li>
           </ul>
         </nav>
-        
-        <img class="header__user-icon" src="./assets/images/icon_profile.svg" alt="profile icon" >
+        <div class="header__container">
+          <img class="header__user-icon" id="profileBtn" src="./assets/images/icon_profile.svg" alt="profile icon" >
+          <div class="header__dropdown">
+            <h2 class="header__dropdown_title">Profile</h2>
+            <ul class="header__dropdown_list header__dropdown_list-notLoggedIn">
+              <li class="header__dropdown_item">
+                <a href="#" class="header__dropdown_link" id="logInBtn">Log In</a>
+              </li>
+              <li class="header__dropdown_item">
+                <a href="#" class="header__dropdown_link" id="registerBtn">Register</a>
+              </li>
+            </ul>
+            <ul class="header__dropdown_list header__dropdown_list-loggedIn">
+              <li class="header__dropdown_item">
+                <a href="#" class="header__dropdown_link" >My profile</a>
+              </li>
+              <li class="header__dropdown_item">
+                <a href="#" class="header__dropdown_link" id="logOutBtn">Log Out</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
         <img class="header__burger-icon" src="./assets/images/icon_burger.svg" alt="burger menu icon" id="header-menu-button" >
         <img class="header__close-icon" src="./assets/images/icon_close.svg" alt="burger menu close icon" id="header-menu-close-button" >
+        
       </div>
     </header>
     <main class="main">
@@ -558,6 +580,91 @@
           </div>
         </div>
       </section>
+      <div class="popup popup__login">
+        <div class="popup__container">
+          <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
+          <h2 class="popup__title">Login</h2>
+          <form action="submit" class="popup__form" name="login" novalidate="">
+            <label class="popup__field">
+              <span class="popup__field_name">E-mail or readers card</span>
+              <input type="text" minlength="2" maxlength="40" id="login-email" class="popup__input popup__input_type_email" required value="">
+            </label>
+            <label class="popup__field">
+              <span class="popup__field_name">Password</span>
+              <input type="text" minlength="2" maxlength="200" id="login-password" class="popup__input popup__input_type_password" required value="">
+            </label>
+            <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Log In" >Log In</button>
+            <span class="popup__text">Don’t have an account? <a class="popup__link">Register</a></span> 
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup__register">
+        <div class="popup__container">
+          <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
+          <h2 class="popup__title">Register</h2>
+          <form action="submit" class="popup__form" name="register" novalidate="">
+            <label class="popup__field">
+              <span class="popup__field_name">First name</span>
+              <input type="text" minlength="2" maxlength="40" id="register-firstName" class="popup__input popup__input_type_firstName" required value="">
+            </label>
+            <label class="popup__field">
+              <span class="popup__field_name">Last name</span>
+              <input type="text" minlength="2" maxlength="40" id="register-lastName" class="popup__input popup__input_type_lastName" required value="">
+            </label>
+            <label class="popup__field">
+              <span class="popup__field_name">E-mail</span>
+              <input type="email" minlength="2" maxlength="40" id="register-email" class="popup__input popup__input_type_firstName" required value="">
+            </label>
+            <label class="popup__field">
+              <span class="popup__field_name">Password</span>
+              <input type="password" minlength="8" maxlength="200" id="register-password" class="popup__input popup__input_type_password" required value="">
+            </label>
+            <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Sign Up" >Sign Up</button>
+            <span class="popup__text">Already have an account? <a class="popup__link">Login</a></span> 
+          </form>
+        </div>
+      </div>
+      <div class="popup popup__profile">
+        <div class="popup__container popup__container_profile">
+          <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
+          <div class="popup__columns">
+            <div class="popup__column popup__column-left">
+              <div class="popup__profile-pic">JD</div>
+              <div class="popup__profile-name">John Doe</div>
+            </div>
+
+            <div class="popup__column popup__column-right">
+              <h2 class="popup__column_title">my profile</h2>
+              <div class="stats__columns">
+                <div class="stats__column">
+                  <h4 class="stats__title">Visits</h4>
+                  <img class="stats__icon" src="./assets/images/icon_visits.svg">
+                  <span class="stats__text">23</span>
+                </div>
+                <div class="stats__column">
+                  <h4 class="stats__title">Bonuses</h4>
+                  <img class="stats__icon" src="./assets/images/icon_bonuses.svg">
+                  <span class="stats__text">1240</span>
+                </div>
+                <div class="stats__column">
+                  <h4 class="stats__title">Books</h4>
+                  <img class="stats__icon" src="./assets/images/icon_books.svg">
+                  <span class="stats__text">2</span>
+                </div>
+              </div>
+              <h3 class="profile__list_title">Rented books</h3>
+              <ul class="profile__list">
+                <li class="profile__list_item">The Last Queen, Clive Irving</li>
+                <li class="profile__list_item">Dominicana, Angie Cruz</li>
+              </ul>
+              <p class="profile__card">
+                Card number<span class="profile__card_number">F00234030</span>
+                <img class="profile__card_copy-btn" src="./assets/images/icon_copy.svg"></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer__columns">
