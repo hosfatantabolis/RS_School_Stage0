@@ -588,10 +588,12 @@
             <label class="popup__field">
               <span class="popup__field_name">E-mail or readers card</span>
               <input type="text" minlength="2" maxlength="40" id="login-email" class="popup__input popup__input_type_email" required value="">
+              <span class="popup__error" id="login-email-error"></span>
             </label>
             <label class="popup__field">
               <span class="popup__field_name">Password</span>
               <input type="text" minlength="8" maxlength="200" id="login-password" class="popup__input popup__input_type_password" required value="">
+              <span class="popup__error" id="login-password-error"></span>
             </label>
             <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Log In" id="loginFormBtn">Log In</button>
             <span class="popup__text">Don’t have an account? <a class="popup__link" id="popupLoginRegisterBtn">Register</a></span> 
@@ -607,18 +609,22 @@
             <label class="popup__field">
               <span class="popup__field_name">First name</span>
               <input type="text" minlength="2" maxlength="40" id="register-firstName" class="popup__input popup__input_type_firstName" required value="">
+              <span class="popup__error" id="register-firstName-error"></span>
             </label>
             <label class="popup__field">
               <span class="popup__field_name">Last name</span>
               <input type="text" minlength="2" maxlength="40" id="register-lastName" class="popup__input popup__input_type_lastName" required value="">
+              <span class="popup__error" id="register-lastName-error"></span>
             </label>
             <label class="popup__field">
               <span class="popup__field_name">E-mail</span>
               <input type="email" minlength="2" maxlength="100" id="register-email" class="popup__input popup__input_type_email" required value="">
+              <span class="popup__error" id="register-email-error"></span>
             </label>
             <label class="popup__field">
               <span class="popup__field_name">Password</span>
               <input type="password" minlength="8" maxlength="100" id="register-password" class="popup__input popup__input_type_password" required value="">
+              <span class="popup__error" id="register-password-error"></span>
             </label>
             <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Sign Up" id="signUpFormBtn">Sign Up</button>
             <span class="popup__text">Already have an account? <a class="popup__link" id="popupRegisterLoginBtn">Login</a></span> 
