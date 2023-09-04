@@ -584,7 +584,7 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Login</h2>
-          <form action="submit" class="popup__form" name="login" novalidate="">
+          <form action="submit" class="popup__form" name="login" novalidate="" id="loginForm">
             <label class="popup__field">
               <span class="popup__field_name">E-mail or readers card</span>
               <input type="text" minlength="2" maxlength="40" id="login-email" class="popup__input popup__input_type_email" required value="">
@@ -593,7 +593,7 @@
               <span class="popup__field_name">Password</span>
               <input type="text" minlength="8" maxlength="200" id="login-password" class="popup__input popup__input_type_password" required value="">
             </label>
-            <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Log In" >Log In</button>
+            <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Log In" id="loginFormBtn">Log In</button>
             <span class="popup__text">Don’t have an account? <a class="popup__link" id="popupLoginRegisterBtn">Register</a></span> 
           </form>
         </div>
@@ -603,7 +603,7 @@
         <div class="popup__container">
           <button type="button" class="popup__close-btn" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Register</h2>
-          <form action="submit" class="popup__form" name="register" novalidate="">
+          <form action="submit" class="popup__form" name="register" novalidate="" id="signUpForm">
             <label class="popup__field">
               <span class="popup__field_name">First name</span>
               <input type="text" minlength="2" maxlength="40" id="register-firstName" class="popup__input popup__input_type_firstName" required value="">
@@ -620,7 +620,7 @@
               <span class="popup__field_name">Password</span>
               <input type="password" minlength="8" maxlength="100" id="register-password" class="popup__input popup__input_type_password" required value="">
             </label>
-            <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Sign Up" >Sign Up</button>
+            <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Sign Up" id="signUpFormBtn">Sign Up</button>
             <span class="popup__text">Already have an account? <a class="popup__link" id="popupRegisterLoginBtn">Login</a></span> 
           </form>
         </div>
