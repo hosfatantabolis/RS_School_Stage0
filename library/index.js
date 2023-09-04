@@ -199,34 +199,203 @@ summerRadio.addEventListener('click', () => showSeason(SUMMER));
 autumnRadio.addEventListener('click', () => showSeason(AUTUMN));
 
 //----------------Dropdown Menu----------------
-let loggedIn = true;
+let loggedIn = false;
 let isDropdownMenuShown = false;
 
 const profileBtn = document.getElementById('profileBtn');
 const fullMenu = document.querySelector('.header__dropdown');
 const loggedInMenu = document.querySelector('.header__dropdown_list-loggedIn');
-const notLoggedInMenu = document.querySelector('.header__dropdown_list-notLoggedIn');
+const notLoggedInMenu = document.querySelector(
+  '.header__dropdown_list-notLoggedIn'
+);
 const closeBtns = document.querySelectorAll('.popup__close-btn');
 
-const showMenu = (logged, isDropdownMenuShown) =>{
+const showDropdownMenu = (logged, isDropdownMenuShown) => {
   // console.log(fullMenu)
 
-  fullMenu.style.display = "block"
-  if(logged){
-    loggedInMenu.style.display = "block"
-  } else{
-    notLoggedInMenu.style.display = "block"
+  fullMenu.style.display = 'block';
+  if (logged) {
+    loggedInMenu.style.display = 'block';
+  } else {
+    notLoggedInMenu.style.display = 'block';
+  }
+};
+
+profileBtn.addEventListener('click', () => {
+  showDropdownMenu(loggedIn);
+});
+
+//-----Close popups-----
+closeBtns.forEach((button) => {
+  button.addEventListener('click', (e) => closePopup(e));
+});
+const closePopup = (e) => {
+  e.target.closest('.popup').classList.remove('popup__open');
+  document.body.removeEventListener('wheel', preventScroll, { passive: false });
+};
+
+const showPopup = (popup) => {
+  document.body.addEventListener('wheel', preventScroll, { passive: false });
+  popup.classList.add('popup__open');
+};
+
+const libraryRegisterBtn = document.getElementById('librarycard__registerBtn');
+const libraryLoginBtn = document.getElementById('librarycard__loginBtn');
+const logInBtn = document.getElementById('logInBtn');
+const registerBtn = document.getElementById('registerBtn');
+const popupLoginRegisterBtn = document.getElementById('popupLoginRegisterBtn'); //register button inside login popup
+const popupRegisterLoginBtn = document.getElementById('popupRegisterLoginBtn'); //login button inside register popup
+const registerPopup = document.getElementById('registerPopup');
+const loginPopup = document.getElementById('loginPopup');
+
+const buyBtns = document.querySelectorAll('.card__button');
+
+libraryRegisterBtn.addEventListener('click', () => {
+  showPopup(registerPopup);
+  removeAllErrors(signUpErrors);
+  disableButton(signUpFormBtn);
+});
+
+registerBtn.addEventListener('click', () => {
+  showPopup(registerPopup);
+  removeAllErrors(signUpErrors);
+  disableButton(signUpFormBtn);
+});
+
+libraryLoginBtn.addEventListener('click', () => {
+  showPopup(loginPopup);
+  removeAllErrors(loginErrors);
+  disableButton(loginFormBtn);
+});
+
+logInBtn.addEventListener('click', () => {
+  showPopup(loginPopup);
+  removeAllErrors(loginErrors);
+  disableButton(loginFormBtn);
+});
+
+popupLoginRegisterBtn.addEventListener('click', (e) => {
+  closePopup(e);
+  showPopup(registerPopup);
+  removeAllErrors(signUpErrors);
+  disableButton(signUpFormBtn);
+});
+
+popupRegisterLoginBtn.addEventListener('click', (e) => {
+  closePopup(e);
+  showPopup(loginPopup);
+  removeAllErrors(loginErrors);
+  disableButton(loginFormBtn);
+});
+
+if (loggedIn === false) {
+  buyBtns.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      document.body.addEventListener('wheel', preventScroll, {
+        passive: false,
+      });
+      showPopup(loginPopup);
+    });
+  });
+}
+
+// ----------------- FORM VALIDATION ----------------
+const validationSettings = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  errorClass: 'popup__error_visible'
+};
+
+const validate = (form, element) => {
+  if(!element.validity.valid){
+    showError(form, element, element.validationMessage);
+  }else{
+    hideError(form, element);
   }
 }
 
-const closePopup = (e) => {
-  e.target.closest('.popup').classList.remove('popup__open')
+const removeAllErrors = (errorList) => {
+  errorList.forEach(item => {
+    item.textContent = '';
+    item.classList.remove(this._errorClass);
+  });
 }
 
-profileBtn.addEventListener('click', ()=>{
-  showMenu(loggedIn)
+const showError = (form, element, message) => {
+  const errorElement = form.querySelector(`#${element.id}-error`);
+  errorElement.classList.add(validationSettings.errorClass);
+  errorElement.textContent = message;
+}
+
+const hideError = (form, element) => {
+  const errorElement = form.querySelector(`#${element.id}-error`);
+  errorElement.textContent = '';
+  errorElement.classList.remove(validationSettings.errorClass);
+}
+
+const disableButton = (button) => {
+  button.classList.add(validationSettings.inactiveButtonClass);
+  button.disabled = true;
+}
+
+const changeButtonState = (elements, button) => {
+  if(isInputInvalid(elements)){
+    disableButton(button);
+  }else{
+    button.classList.remove(validationSettings.inactiveButtonClass);
+    button.disabled = false;
+  }
+}
+
+const isInputInvalid = (elements) => {
+  return elements.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+const signUpForm = document.getElementById('signUpForm');
+const signUpFormBtn = document.getElementById('signUpFormBtn');
+const signUpFormInputList = Array.from(signUpForm.querySelectorAll(validationSettings.inputSelector));
+const signUpErrors = Array.from(signUpForm.querySelectorAll(validationSettings.errorClass));
+
+signUpFormInputList.forEach(formElement => {
+  formElement.addEventListener('input', ()=> {
+    validate(signUpForm, formElement);
+    changeButtonState(signUpFormInputList, signUpFormBtn);
+    isInputInvalid(signUpFormInputList);
+  })
 })
 
-closeBtns.forEach(button=>{
-  button.addEventListener("click", (e)=> closePopup(e))
+signUpForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  // console.log(e.target);
+  const formValues = {};
+  signUpFormInputList.forEach(item => {
+    formValues[(item.id).replace('register-','')] = item.value;
+  });
+  // if()
+  const usersDB = localStorage.getItem('usersDB') || [];
+  localStorage.setItem('usersDB',JSON.stringify(formValues));
+  signUpForm.reset();
 })
+
+const loginForm = document.getElementById('loginForm');
+const loginFormBtn = document.getElementById('loginFormBtn');
+const loginFormInputList = Array.from(loginForm.querySelectorAll(validationSettings.inputSelector));
+const loginErrors = Array.from(loginForm.querySelectorAll(validationSettings.errorClass));
+
+
+loginForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+})
+
+loginFormInputList.forEach(formElement => {
+  formElement.addEventListener('input', ()=> {
+    validate(loginForm, formElement);
+    changeButtonState(loginFormInputList, loginFormBtn);
+    isInputInvalid(loginFormInputList);
+  })
+})
+
+// ----------------- FORM VALIDATION ----------------
