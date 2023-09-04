@@ -103,6 +103,12 @@
     outline: none;
 }
 
+.popup__error_visible{
+    font-size: 12px;
+    line-height: 1.25;
+    color: red;
+}
+
 .popup__submit{
     /* width: 75px; */
     font-size: 10px;
