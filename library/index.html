@@ -594,7 +594,7 @@
               <input type="text" minlength="2" maxlength="200" id="login-password" class="popup__input popup__input_type_password" required value="">
             </label>
             <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Log In" >Log In</button>
-            <span class="popup__text">Don’t have an account? <a class="popup__link">Register</a></span> 
+            <span class="popup__text">Don’t have an account? <a class="popup__link" id="popupLoginRegisterBtn">Register</a></span> 
           </form>
         </div>
       </div>
@@ -621,7 +621,7 @@
               <input type="password" minlength="8" maxlength="100" id="register-password" class="popup__input popup__input_type_password" required value="">
             </label>
             <button type="submit" class="popup__submit popup__submit_disabled" aria-label="Sign Up" >Sign Up</button>
-            <span class="popup__text">Already have an account? <a class="popup__link">Login</a></span> 
+            <span class="popup__text">Already have an account? <a class="popup__link" id="popupRegisterLoginBtn">Login</a></span> 
           </form>
         </div>
       </div>
@@ -666,7 +666,7 @@
         </div>
       </div>
 
-      <div class="popup popup__buy popup__open">
+      <div class="popup popup__buy">
         <div class="popup__container popup__container_buy">
           <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
           <h2 class="popup__buy_title">Buy a library card</h2>
