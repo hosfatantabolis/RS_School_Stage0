@@ -369,15 +369,24 @@ signUpFormInputList.forEach(formElement => {
 
 signUpForm.addEventListener('submit', (e)=>{
   e.preventDefault();
-  // console.log(e.target);
   const formValues = {};
   signUpFormInputList.forEach(item => {
     formValues[(item.id).replace('register-','')] = item.value;
   });
-  // if()
-  const usersDB = localStorage.getItem('usersDB') || [];
-  localStorage.setItem('usersDB',JSON.stringify(formValues));
-  signUpForm.reset();
+  formValues.loggedIn = true;
+  formValues.cardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+  const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
+  const hasError = usersDB?.some((user)=>{
+    return user.email===formValues.email
+  });
+  if(hasError){
+    alert(`User with email ${formValues.email} is already registered! Try another email!`)
+    disableButton(signUpFormBtn);
+  } else {
+    localStorage.setItem('usersDB', JSON.stringify([...usersDB, formValues]));
+    signUpForm.reset();
+    closePopup(e);
+  }
 })
 
 const loginForm = document.getElementById('loginForm');
@@ -388,6 +397,16 @@ const loginErrors = Array.from(loginForm.querySelectorAll(validationSettings.err
 
 loginForm.addEventListener('submit', (e)=>{
   e.preventDefault();
+  const formValues = {};
+  loginFormInputList.forEach(item => {
+    formValues[(item.id).replace('login-','')] = item.value;
+  });
+  const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
+  usersDB.forEach(user=>{
+    if((user.email===formValues.email && user.password===formValues.password) || (user.cardNumber===formValues.email && user.password===formValues.password)){
+      alert('User found! Credentials OK!')
+    }
+  })
 })
 
 loginFormInputList.forEach(formElement => {
