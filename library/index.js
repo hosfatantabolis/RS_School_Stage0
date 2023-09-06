@@ -250,6 +250,11 @@ const closePopup = (e) => {
 
 const showPopup = (popup) => {
   document.body.addEventListener('wheel', preventScroll, { passive: false });
+  popup.addEventListener('click', (e)=>{
+   if(!e.target.closest('.popup__container')){
+    closePopup(e);
+   };
+  })
   popup.classList.add('popup__open');
 };
 
