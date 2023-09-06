@@ -256,6 +256,7 @@ const showPopup = (popup) => {
 const libraryRegisterBtn = document.getElementById('librarycard__registerBtn');
 const libraryLoginBtn = document.getElementById('librarycard__loginBtn');
 const logInBtn = document.getElementById('logInBtn');
+const logOutBtn = document.getElementById('logOutBtn');
 const registerBtn = document.getElementById('registerBtn');
 const popupLoginRegisterBtn = document.getElementById('popupLoginRegisterBtn'); //register button inside login popup
 const popupRegisterLoginBtn = document.getElementById('popupRegisterLoginBtn'); //login button inside register popup
@@ -287,6 +288,11 @@ logInBtn.addEventListener('click', () => {
   showPopup(loginPopup);
   removeAllErrors(loginErrors);
   disableButton(loginFormBtn);
+  toggleDropdownMenu();
+});
+
+logOutBtn.addEventListener('click', () => {
+  localStorage.removeItem('activeUser');
   toggleDropdownMenu();
 });
 
