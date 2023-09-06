@@ -199,6 +199,7 @@ summerRadio.addEventListener('click', () => showSeason(SUMMER));
 autumnRadio.addEventListener('click', () => showSeason(AUTUMN));
 
 //----------------Dropdown Menu----------------
+let user;
 let loggedIn = false;
 let isDropdownMenuShown = false;
 
@@ -210,19 +211,32 @@ const notLoggedInMenu = document.querySelector(
 );
 const closeBtns = document.querySelectorAll('.popup__close-btn');
 
-const showDropdownMenu = (logged, isDropdownMenuShown) => {
-  // console.log(fullMenu)
+const toggleDropdownMenu = () => {
+  user = getUserData();
+  console.log(user);
+  console.log(isDropdownMenuShown);
+  isDropdownMenuShown = !isDropdownMenuShown;
 
-  fullMenu.style.display = 'block';
-  if (logged) {
-    loggedInMenu.style.display = 'block';
+  if(isDropdownMenuShown){
+    fullMenu.style.display = 'block';
+    if (user.email) {
+      loggedInMenu.style.display = 'block';
+      notLoggedInMenu.style.display = 'none';
+    } else {
+      loggedInMenu.style.display = 'none';
+      notLoggedInMenu.style.display = 'block';
+    }
   } else {
-    notLoggedInMenu.style.display = 'block';
+    fullMenu.style.display='';
   }
+
+  console.log(isDropdownMenuShown);
+
+
 };
 
 profileBtn.addEventListener('click', () => {
-  showDropdownMenu(loggedIn);
+  toggleDropdownMenu();
 });
 
 //-----Close popups-----
@@ -260,6 +274,7 @@ registerBtn.addEventListener('click', () => {
   showPopup(registerPopup);
   removeAllErrors(signUpErrors);
   disableButton(signUpFormBtn);
+  toggleDropdownMenu();
 });
 
 libraryLoginBtn.addEventListener('click', () => {
@@ -272,6 +287,7 @@ logInBtn.addEventListener('click', () => {
   showPopup(loginPopup);
   removeAllErrors(loginErrors);
   disableButton(loginFormBtn);
+  toggleDropdownMenu();
 });
 
 popupLoginRegisterBtn.addEventListener('click', (e) => {
@@ -299,7 +315,7 @@ if (loggedIn === false) {
   });
 }
 
-// ----------------- FORM VALIDATION ----------------
+// ----------------- FORM VALIDATION, REGISTER AND LOGIN ----------------
 const validationSettings = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -373,7 +389,7 @@ signUpForm.addEventListener('submit', (e)=>{
   signUpFormInputList.forEach(item => {
     formValues[(item.id).replace('register-','')] = item.value;
   });
-  formValues.loggedIn = true;
+  // formValues.loggedIn = true;
   formValues.cardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
   const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
   const hasError = usersDB?.some((user)=>{
@@ -384,6 +400,7 @@ signUpForm.addEventListener('submit', (e)=>{
     disableButton(signUpFormBtn);
   } else {
     localStorage.setItem('usersDB', JSON.stringify([...usersDB, formValues]));
+    login(formValues);
     signUpForm.reset();
     closePopup(e);
   }
@@ -404,7 +421,10 @@ loginForm.addEventListener('submit', (e)=>{
   const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
   usersDB.forEach(user=>{
     if((user.email===formValues.email && user.password===formValues.password) || (user.cardNumber===formValues.email && user.password===formValues.password)){
-      alert('User found! Credentials OK!')
+      // alert('User found! Credentials OK!');
+      login(user);
+      loginForm.reset();
+      closePopup(e);
     }
   })
 })
@@ -417,4 +437,12 @@ loginFormInputList.forEach(formElement => {
   })
 })
 
-// ----------------- FORM VALIDATION ----------------
+const login = (user) => {
+  // const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
+  localStorage.setItem('activeUser', JSON.stringify(user));
+}
+
+const getUserData = () =>{
+ return JSON.parse(localStorage.getItem('activeUser')) || {};
+}
+// ----------------- FORM VALIDATION, REGISTER AND LOGIN ----------------
