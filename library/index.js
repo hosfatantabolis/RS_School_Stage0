@@ -204,6 +204,8 @@ let loggedIn = false;
 let isDropdownMenuShown = false;
 
 const profileBtn = document.getElementById('profileBtn');
+const notLoggedInProfileBtn = profileBtn.querySelector('.header__icon_type-image');
+const loggedInProfileBtn = profileBtn.querySelector('.header__icon_type-userFLN');
 const fullMenu = document.querySelector('.header__dropdown');
 const loggedInMenu = document.querySelector('.header__dropdown_list-loggedIn');
 const notLoggedInMenu = document.querySelector(
@@ -213,26 +215,30 @@ const closeBtns = document.querySelectorAll('.popup__close-btn');
 
 const toggleDropdownMenu = () => {
   user = getUserData();
-  console.log(user);
-  console.log(isDropdownMenuShown);
   isDropdownMenuShown = !isDropdownMenuShown;
-
   if(isDropdownMenuShown){
+    // fullMenu.addEventListener('click', (e)=>{
+    //   if(!e.target.closest('.header__dropdown')){
+    //     toggleDropdownMenu();
+    //     console.log(e);
+    //   };
+    //  });
     fullMenu.style.display = 'block';
     if (user.email) {
       loggedInMenu.style.display = 'block';
       notLoggedInMenu.style.display = 'none';
+      loggedInProfileBtn.style.display = 'block';
+      loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`
+      notLoggedInProfileBtn.style.display = 'none';
     } else {
       loggedInMenu.style.display = 'none';
       notLoggedInMenu.style.display = 'block';
+      loggedInProfileBtn.style.display = 'none';
+      notLoggedInProfileBtn.style.display = 'block';
     }
   } else {
     fullMenu.style.display='';
   }
-
-  console.log(isDropdownMenuShown);
-
-
 };
 
 profileBtn.addEventListener('click', () => {
@@ -254,7 +260,7 @@ const showPopup = (popup) => {
    if(!e.target.closest('.popup__container')){
     closePopup(e);
    };
-  })
+  });
   popup.classList.add('popup__open');
 };
 
@@ -262,11 +268,13 @@ const libraryRegisterBtn = document.getElementById('librarycard__registerBtn');
 const libraryLoginBtn = document.getElementById('librarycard__loginBtn');
 const logInBtn = document.getElementById('logInBtn');
 const logOutBtn = document.getElementById('logOutBtn');
+const myProfileBtn = document.getElementById('myProfileBtn');
 const registerBtn = document.getElementById('registerBtn');
 const popupLoginRegisterBtn = document.getElementById('popupLoginRegisterBtn'); //register button inside login popup
 const popupRegisterLoginBtn = document.getElementById('popupRegisterLoginBtn'); //login button inside register popup
 const registerPopup = document.getElementById('registerPopup');
 const loginPopup = document.getElementById('loginPopup');
+const profilePopup = document.getElementById('profilePopup');
 
 const buyBtns = document.querySelectorAll('.card__button');
 
@@ -401,7 +409,7 @@ signUpForm.addEventListener('submit', (e)=>{
     formValues[(item.id).replace('register-','')] = item.value;
   });
   // formValues.loggedIn = true;
-  formValues.cardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+  formValues.cardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
   const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
   const hasError = usersDB?.some((user)=>{
     return user.email===formValues.email
@@ -457,3 +465,31 @@ const getUserData = () =>{
  return JSON.parse(localStorage.getItem('activeUser')) || {};
 }
 // ----------------- FORM VALIDATION, REGISTER AND LOGIN ----------------
+
+
+//------------------ Profile Popup ----------------
+// Buttons
+const profilePopupPic = document.getElementById('profilePopupPic');
+const profilePopupFullName = document.getElementById('profilePopupFullName');
+const profilePopupCopyBtn = document.getElementById('profilePopupCopyBtn');
+
+//Text elements
+const profilePopupCardNumber = document.getElementById('profilePopupCardNumber');
+const profilePopupVisits = document.getElementById('profilePopupVisits');
+const profilePopupBonuses = document.getElementById('profilePopupBonuses');;
+const profilePopupBooks = document.getElementById('profilePopupBooks');
+
+myProfileBtn.addEventListener('click', ()=>{
+  showPopup(profilePopup);
+  toggleDropdownMenu();
+  profilePopupPic.textContent = `${user.firstName[0]}${user.lastName[0]}`;
+  profilePopupFullName.textContent = `${user.firstName} ${user.lastName}`;
+  profilePopupVisits.textContent = user.visits;
+  profilePopupBonuses.textContent = user.bonuses;
+  profilePopupBooks.textContent = user.books.length;
+  profilePopupCardNumber.textContent = user.cardNumber;
+  
+  profilePopupCopyBtn.addEventListener('click', ()=>{
+    navigator.clipboard.writeText(profilePopupCardNumber.textContent);
+  })
+})
