@@ -52,6 +52,17 @@
   width: 28px;
   height: 28px;
 }
+.header__icon_type-userFLN{
+  border-radius: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  line-height: 28px;
+  color: #0c0c0e;
+  width: 28px;
+  height: 28px;
+  display: none;
+  cursor: pointer;
+}
 
 .header__burger-icon{
   display: none;
@@ -65,7 +76,7 @@
   text-decoration: underline;
 }
 
-.header__user-icon:hover, .header__burger-icon:hover, .header__close-icon:hover {
+.header__icon_type-image:hover, .header__burger-icon:hover, .header__close-icon:hover {
   cursor: pointer;
   filter: invert(68%) sepia(18%) saturate(971%) hue-rotate(355deg) brightness(87%) contrast(84%);
   transition: filter 500ms linear;
