@@ -34,7 +34,11 @@
           </ul>
         </nav>
         <div class="header__container">
-          <img class="header__user-icon" id="profileBtn" src="./assets/images/icon_profile.svg" alt="profile icon" >
+          <!-- <img class="header__user-icon" id="profileBtn" src="./assets/images/icon_profile.svg" alt="profile icon" > -->
+          <div class="header__user-icon" id="profileBtn">
+            <img class="header__icon_type-image" src="./assets/images/icon_profile.svg" alt="profile icon" >
+            <div class="header__icon_type-userFLN"></div>
+          </div>
           <div class="header__dropdown">
             <h2 class="header__dropdown_title">Profile</h2>
             <ul class="header__dropdown_list header__dropdown_list-notLoggedIn">
@@ -47,7 +51,7 @@
             </ul>
             <ul class="header__dropdown_list header__dropdown_list-loggedIn">
               <li class="header__dropdown_item">
-                <a href="#" class="header__dropdown_link" >My profile</a>
+                <a href="#" class="header__dropdown_link" id="myProfileBtn">My profile</a>
               </li>
               <li class="header__dropdown_item">
                 <a href="#" class="header__dropdown_link" id="logOutBtn">Log Out</a>
@@ -633,13 +637,13 @@
           </form>
         </div>
       </div>
-      <div class="popup popup__profile">
+      <div class="popup popup__profile" id="profilePopup">
         <div class="popup__container popup__container_profile">
           <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
           <div class="popup__columns">
             <div class="popup__column popup__column-left">
-              <div class="popup__profile-pic">JD</div>
-              <div class="popup__profile-name">John Doe</div>
+              <div class="popup__profile-pic" id="profilePopupPic">JD</div>
+              <div class="popup__profile-name" id="profilePopupFullName">John Doe</div>
             </div>
 
             <div class="popup__column popup__column-right">
@@ -648,17 +652,17 @@
                 <div class="stats__column">
                   <h4 class="stats__title">Visits</h4>
                   <img class="stats__icon" src="./assets/images/icon_visits.svg" alt="visits icon">
-                  <span class="stats__text">23</span>
+                  <span class="stats__text" id="profilePopupVisits">23</span>
                 </div>
                 <div class="stats__column">
                   <h4 class="stats__title">Bonuses</h4>
                   <img class="stats__icon" src="./assets/images/icon_bonuses.svg" alt="bonuses icon">
-                  <span class="stats__text">1240</span>
+                  <span class="stats__text" id="profilePopupBonuses">1240</span>
                 </div>
                 <div class="stats__column">
                   <h4 class="stats__title">Books</h4>
                   <img class="stats__icon" src="./assets/images/icon_books.svg" alt="books icon">
-                  <span class="stats__text">2</span>
+                  <span class="stats__text" id="profilePopupBooks">2</span>
                 </div>
               </div>
               <h3 class="profile__list_title">Rented books</h3>
@@ -667,8 +671,8 @@
                 <li class="profile__list_item">Dominicana, Angie Cruz</li>
               </ul>
               <p class="profile__card">
-                Card number<span class="profile__card_number">F00234030</span>
-                <img class="profile__card_copy-btn" src="./assets/images/icon_copy.svg" alt="copy icon"></p>
+                Card number<span class="profile__card_number" id="profilePopupCardNumber">F00234030</span>
+                <img class="profile__card_copy-btn" src="./assets/images/icon_copy.svg" alt="copy icon" id="profilePopupCopyBtn"></p>
             </div>
           </div>
         </div>
@@ -676,7 +680,7 @@
 
       <div class="popup popup__buy">
         <div class="popup__container popup__container_buy">
-          <button type="button" class="popup__close-btn popup__close-btn_profile" aria-label="Закрыть окно"></button>
+          <button type="button" class="popup__close-btn popup__close-btn_buy" aria-label="Закрыть окно"></button>
           <h2 class="popup__buy_title">Buy a library card</h2>
           <div class="popup__buy_columns">
             <form action="submit" class="popup__form" name="register" novalidate="">
