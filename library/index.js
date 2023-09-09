@@ -28,6 +28,7 @@ function eventHandler(e) {
 }
 
 function addClasses() {
+  toggleDropdownMenu();
   sideMenuButton.classList.add('header__burger-icon_hidden');
   sideMenuCloseButton.classList.add('header__burger-close_visible');
   sideMenu.classList.add('header__navigation-visible');
@@ -204,6 +205,7 @@ let loggedIn = false;
 let isDropdownMenuShown = false;
 
 const profileBtn = document.getElementById('profileBtn');
+const dropdownTitle = document.getElementById('dropdownTitle');
 const notLoggedInProfileBtn = profileBtn.querySelector('.header__icon_type-image');
 const loggedInProfileBtn = profileBtn.querySelector('.header__icon_type-userFLN');
 const fullMenu = document.querySelector('.header__dropdown');
@@ -215,34 +217,52 @@ const closeBtns = document.querySelectorAll('.popup__close-btn');
 
 const toggleDropdownMenu = () => {
   user = getUserData();
+  removeClasses()
   isDropdownMenuShown = !isDropdownMenuShown;
-  if(isDropdownMenuShown){
-    // fullMenu.addEventListener('click', (e)=>{
-    //   if(!e.target.closest('.header__dropdown')){
-    //     toggleDropdownMenu();
-    //     console.log(e);
-    //   };
-    //  });
-    fullMenu.style.display = 'block';
-    if (user.email) {
-      loggedInMenu.style.display = 'block';
-      notLoggedInMenu.style.display = 'none';
-      loggedInProfileBtn.style.display = 'block';
-      loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`
-      notLoggedInProfileBtn.style.display = 'none';
-    } else {
-      loggedInMenu.style.display = 'none';
-      notLoggedInMenu.style.display = 'block';
-      loggedInProfileBtn.style.display = 'none';
-      notLoggedInProfileBtn.style.display = 'block';
-    }
-  } else {
-    fullMenu.style.display='';
-  }
+  isDropdownMenuShown ? openDropdown() : closeDropdown();
 };
 
-profileBtn.addEventListener('click', () => {
+const closeDropdown = (e) => {
+  fullMenu.style.display='';
+  document.removeEventListener('click', addEL, false);
+}
+
+function addEL(e){
+  //  console.log(e.target)
+    if(!e.target.closest('.header__dropdown')) {
+      // console.log(e.target.closest('.header__dropdown'));
+      toggleDropdownMenu();
+      document.removeEventListener('click', addEL, false);
+    }
+}
+
+const openDropdown = () => {
+  document.addEventListener('click', addEL, false);
+  fullMenu.style.display = 'block';
+  if (user.email) {
+    loggedInMenu.style.display = 'block';
+    notLoggedInMenu.style.display = 'none';
+    loggedInProfileBtn.style.display = 'block';
+    loggedInProfileBtn.setAttribute("title", `${user.firstName} ${user.lastName}`);
+    loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`
+    notLoggedInProfileBtn.style.display = 'none';
+    dropdownTitle.textContent = user.cardNumber;
+    dropdownTitle.style.fontSize = '12px';
+  } else {
+    loggedInMenu.style.display = 'none';
+    notLoggedInMenu.style.display = 'block';
+    loggedInProfileBtn.style.display = 'none';
+    notLoggedInProfileBtn.style.display = 'block';
+    dropdownTitle.textContent = 'Profile';
+    dropdownTitle.style.fontSize = '15px';
+    loggedInProfileBtn.removeAttribute("title");
+  }
+}
+
+
+profileBtn.addEventListener('click', (e) => {
   toggleDropdownMenu();
+  e.stopPropagation();
 });
 
 //-----Close popups-----
@@ -418,6 +438,7 @@ signUpForm.addEventListener('submit', (e)=>{
     alert(`User with email ${formValues.email} is already registered! Try another email!`)
     disableButton(signUpFormBtn);
   } else {
+    formValues.books = [], formValues.visits = 0, formValues.bonuses = 0;
     localStorage.setItem('usersDB', JSON.stringify([...usersDB, formValues]));
     login(formValues);
     signUpForm.reset();
@@ -440,8 +461,8 @@ loginForm.addEventListener('submit', (e)=>{
   const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
   usersDB.forEach(user=>{
     if((user.email===formValues.email && user.password===formValues.password) || (user.cardNumber===formValues.email && user.password===formValues.password)){
-      // alert('User found! Credentials OK!');
       login(user);
+      updateUserData(user);
       loginForm.reset();
       closePopup(e);
     }
@@ -457,12 +478,25 @@ loginFormInputList.forEach(formElement => {
 })
 
 const login = (user) => {
-  // const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
+  user.visits += 1;
+  // updateUserData(user);
   localStorage.setItem('activeUser', JSON.stringify(user));
 }
 
 const getUserData = () =>{
  return JSON.parse(localStorage.getItem('activeUser')) || {};
+}
+
+const updateUserData = (user) => {
+  let db = JSON.parse(localStorage.getItem('usersDB'));
+  const updatedDB = db.map(item => {
+    if(user.cardNumber === item.cardNumber) {
+      return user;
+    }
+    return item;
+  });
+  localStorage.setItem('usersDB', JSON.stringify(updatedDB));
+  localStorage.setItem('activeUser', JSON.stringify(user));
 }
 // ----------------- FORM VALIDATION, REGISTER AND LOGIN ----------------
 
@@ -493,3 +527,4 @@ myProfileBtn.addEventListener('click', ()=>{
     navigator.clipboard.writeText(profilePopupCardNumber.textContent);
   })
 })
+
