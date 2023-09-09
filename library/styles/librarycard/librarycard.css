@@ -83,6 +83,9 @@
   letter-spacing: 1px;
   margin: auto;
 }
+.librarycard__form_button_hidden{
+  display: none;
+}
 .librarycard__text {
   font-size: 20px;
   font-style: normal;
@@ -121,6 +124,10 @@
   transition: background-color 500ms linear;
 }
 
+.librarycard__stats_hidden{
+  display: none;
+}
+
 @media screen and (max-width: 1024px) {
   .librarycard__columns{
     flex-direction: column;
@@ -140,7 +147,14 @@
   .librarycard__title:not(.librarycard__form_title){
     margin: 20px 0 38px 0;
   }
-  
+  .librarycard__stats{
+    display: flex;
+    justify-content: center;
+    /* display: none; */
+  }
+  .librarycard__stats_hidden{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 700px) {
