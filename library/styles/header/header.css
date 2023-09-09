@@ -51,13 +51,16 @@
   margin-left: 30px;
   width: 28px;
   height: 28px;
+  z-index: 3;
+  position: relative;
 }
 .header__icon_type-userFLN{
   border-radius: 50%;
   background-color: #ffffff;
   text-align: center;
   line-height: 28px;
-  color: #0c0c0e;
+  color: #BB945F;
+  font-size: 15px;
   width: 28px;
   height: 28px;
   display: none;
