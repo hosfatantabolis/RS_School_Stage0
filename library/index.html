@@ -553,7 +553,7 @@
             <h3 class="librarycard__title librarycard__form_title">
               Find your Library card
             </h3>
-            <form class="librarycard__form">
+            <form class="librarycard__form" id="librarycardForm">
               <div class="librarycard__form_wrapper">
                 <h4 class="librarycard__form_subtitle">
                   Brooklyn Public Library
@@ -562,15 +562,37 @@
                   class="librarycard__form_input"
                   type="text"
                   placeholder="Reader's name"
+                  id="card-name"
                 >
                 <input
                   class="librarycard__form_input"
                   type="text"
                   placeholder="Card number"
+                  id="card-number"
                 >
+              </div>
+              <div class="librarycard__stats librarycard__stats_hidden" id="librarycardStats">
+                <div class="stats__columns">
+                  <div class="stats__column">
+                    <h4 class="stats__title">Visits</h4>
+                    <img class="stats__icon" src="./assets/images/icon_visits.svg" alt="visits icon">
+                    <span class="stats__text" id="profilePopupVisits">23</span>
+                  </div>
+                  <div class="stats__column">
+                    <h4 class="stats__title">Bonuses</h4>
+                    <img class="stats__icon" src="./assets/images/icon_bonuses.svg" alt="bonuses icon">
+                    <span class="stats__text" id="profilePopupBonuses">1240</span>
+                  </div>
+                  <div class="stats__column">
+                    <h4 class="stats__title">Books</h4>
+                    <img class="stats__icon" src="./assets/images/icon_books.svg" alt="books icon">
+                    <span class="stats__text" id="profilePopupBooks">2</span>
+                  </div>
+                </div>
               </div>
               <button
                 class="librarycard__form_button"
+                id="libraryCardBtn"
                 type="submit"                
               >Check the card</button>
             </form>
