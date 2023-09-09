@@ -28,7 +28,7 @@ function eventHandler(e) {
 }
 
 function addClasses() {
-  toggleDropdownMenu();
+  closeDropdown();
   sideMenuButton.classList.add('header__burger-icon_hidden');
   sideMenuCloseButton.classList.add('header__burger-close_visible');
   sideMenu.classList.add('header__navigation-visible');
@@ -242,23 +242,42 @@ const openDropdown = () => {
   if (user.email) {
     loggedInMenu.style.display = 'block';
     notLoggedInMenu.style.display = 'none';
-    loggedInProfileBtn.style.display = 'block';
-    loggedInProfileBtn.setAttribute("title", `${user.firstName} ${user.lastName}`);
-    loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`
-    notLoggedInProfileBtn.style.display = 'none';
+    // loggedInProfileBtn.style.display = 'block';
+    // loggedInProfileBtn.setAttribute("title", `${user.firstName} ${user.lastName}`);
+    // loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`;
+    // notLoggedInProfileBtn.style.display = 'none';
     dropdownTitle.textContent = user.cardNumber;
     dropdownTitle.style.fontSize = '12px';
   } else {
     loggedInMenu.style.display = 'none';
     notLoggedInMenu.style.display = 'block';
-    loggedInProfileBtn.style.display = 'none';
-    notLoggedInProfileBtn.style.display = 'block';
+    // loggedInProfileBtn.style.display = 'none';
+    // notLoggedInProfileBtn.style.display = 'block';
     dropdownTitle.textContent = 'Profile';
     dropdownTitle.style.fontSize = '15px';
+    // loggedInProfileBtn.removeAttribute("title");
+  }
+  checkLogin(user);
+}
+
+const checkLogin = (user) => {
+  if(user.email){
+    loggedInProfileBtn.style.display = 'block';
+    loggedInProfileBtn.setAttribute("title", `${user.firstName} ${user.lastName}`);
+    loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`;
+    notLoggedInProfileBtn.style.display = 'none';
+  } else {
+    loggedInProfileBtn.style.display = 'none';
+    notLoggedInProfileBtn.style.display = 'block';
     loggedInProfileBtn.removeAttribute("title");
   }
 }
 
+// checkLogin(user)
+window.addEventListener('load', function() {
+  user = getUserData();
+  checkLogin(user);
+})
 
 profileBtn.addEventListener('click', (e) => {
   toggleDropdownMenu();
@@ -326,6 +345,8 @@ logInBtn.addEventListener('click', () => {
 
 logOutBtn.addEventListener('click', () => {
   localStorage.removeItem('activeUser');
+  user={};
+  checkLogin(user);
   toggleDropdownMenu();
 });
 
@@ -481,6 +502,7 @@ const login = (user) => {
   user.visits += 1;
   // updateUserData(user);
   localStorage.setItem('activeUser', JSON.stringify(user));
+  checkLogin(user);
 }
 
 const getUserData = () =>{
