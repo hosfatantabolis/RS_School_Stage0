@@ -5,6 +5,32 @@ console.log('---------------');
 console.log(
   'Самопроверка, часть 2:\nВёрстка соответствует макету. Ширина экрана 768px +26\nНи на одном из разрешений до 640px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется +12\nНа ширине экрана 768рх реализовано адаптивное меню +12'
 );
+console.log('---------------');
+console.log(
+  `Самопроверка, часть 3:\n
+  Этап 1: 
+  - Ограниченная карусель в блоке About +25
+  - Слайдер в блоке Favorites +8
+  - До регистрации
+  - До авторизации
+  Этап 2: 
+  - Меню авторизации при нажатии на иконку пользователя +8
+  - Модальное окно REGISTER +29
+  - Окончание регистрации +6
+  - При наличии регистрации, но будучи не авторизованным +4
+  Этап 3: 
+  - Модальное окно LOGIN +27
+  - Блок Favorites +2
+  Этап 4: 
+  - Меню профиля при нажатии на иконку c инициалами пользователя +16
+  - Модальное окно MY PROFILE +25
+  - Блок Favorites +6
+  - Модальное окно BUY A LIBRARY CARD +27
+  - Блок Digital Library Cards +2
+  
+  Как бы сделано всё, но что-то баллов по заданию максимум  163 получается. А так 200, да.
+  `
+);
 
 //----------------- Side menu -----------------
 let height = window.innerHeight;
@@ -334,7 +360,6 @@ const closePopup = (e) => {
 };
 
 const showPopup = (popup) => {
-  console.log("here")
   // document.addEventListener('wheel', preventScroll, { passive: false });
   popup.addEventListener('click', (e)=>{
    if(!e.target.closest('.popup__container')){
@@ -391,6 +416,7 @@ logOutBtn.addEventListener('click', () => {
   checkLogin(user);
   toggleDropdownMenu();
   showLibraryColumn();
+  setStats(user)
   setButtons();
 });
 
@@ -589,17 +615,24 @@ const librarycardProfileBtn = document.getElementById('librarycardProfileBtn');
 librarycardProfileBtn.addEventListener('click', () => showPopup(profilePopup))
 
 const setStats = (user) => {
-  librarycardVisits.textContent = user.visits;
-  librarycardBonuses.textContent = user.bonuses;
-  librarycardBooks.textContent = user.books.length;
-  librarycardInputFields[0].value = `${user.firstName} ${user.lastName}`;
-  librarycardInputFields[1].value = `${user.cardNumber}`;
-  libraryCardBtn.classList.add('librarycard__form_button_hidden');
-  librarycardStats.classList.remove('librarycard__stats_hidden');
-  profileBooksList.innerHTML = '';
-  user.books.forEach((book)=>{
-    profileBooksList.innerHTML += `<li class="profile__list_item">${book.book}, ${book.author}</li>`;
-  })
+  if(user.email){
+    librarycardVisits.textContent = user.visits;
+    librarycardBonuses.textContent = user.bonuses;
+    librarycardBooks.textContent = user.books.length;
+    librarycardInputFields[0].value = `${user.firstName} ${user.lastName}`;
+    librarycardInputFields[1].value = `${user.cardNumber}`;
+    libraryCardBtn.classList.add('librarycard__form_button_hidden');
+    librarycardStats.classList.remove('librarycard__stats_hidden');
+    profileBooksList.innerHTML = '';
+    user.books.forEach((book)=>{
+      profileBooksList.innerHTML += `<li class="profile__list_item">${book.book}, ${book.author}</li>`;
+    })
+  } else {
+    libraryCardBtn.classList.remove('librarycard__form_button_hidden');
+    librarycardStats.classList.add('librarycard__stats_hidden');
+    librarycardForm.reset();
+  }
+  
 }
 
 const hideLibraryColumn = () => {
@@ -628,10 +661,8 @@ librarycardForm.addEventListener('submit', (e)=>{
   librarycardInputFields.forEach(item => {
     formValues[(item.id).replace('card-','')] = item.value;
   });
-   console.log(formValues)
   let db = JSON.parse(localStorage.getItem('usersDB'));
   if(!user.email) {
-    console.log('check')
     let nameForCheck = formValues.name.split(' ');
     db.forEach(user=>{
       if(user.firstName===nameForCheck[0] && user.lastName===nameForCheck[1] && user.cardNumber === formValues.number){
