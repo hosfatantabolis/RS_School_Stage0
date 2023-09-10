@@ -550,7 +550,7 @@
         <h2 class="section__title contacts__title">Digital Library Cards</h2>
         <div class="librarycard__columns">
           <div class="librarycard__column librarycard__column_form">
-            <h3 class="librarycard__title librarycard__form_title">
+            <h3 class="librarycard__title librarycard__form_title" id="librarycardFormTitle">
               Find your Library card
             </h3>
             <form class="librarycard__form" id="librarycardForm">
@@ -576,17 +576,17 @@
                   <div class="stats__column">
                     <h4 class="stats__title">Visits</h4>
                     <img class="stats__icon" src="./assets/images/icon_visits.svg" alt="visits icon">
-                    <span class="stats__text" id="profilePopupVisits">23</span>
+                    <span class="stats__text" id="librarycardVisits">23</span>
                   </div>
                   <div class="stats__column">
                     <h4 class="stats__title">Bonuses</h4>
                     <img class="stats__icon" src="./assets/images/icon_bonuses.svg" alt="bonuses icon">
-                    <span class="stats__text" id="profilePopupBonuses">1240</span>
+                    <span class="stats__text" id="librarycardBonuses">1240</span>
                   </div>
                   <div class="stats__column">
                     <h4 class="stats__title">Books</h4>
                     <img class="stats__icon" src="./assets/images/icon_books.svg" alt="books icon">
-                    <span class="stats__text" id="profilePopupBooks">2</span>
+                    <span class="stats__text" id="librarycardBooks">2</span>
                   </div>
                 </div>
               </div>
@@ -598,13 +598,14 @@
             </form>
           </div>
           <div class="librarycard__column librarycard__column_sign">
-            <h3 class="librarycard__title">Get a reader card</h3>
-            <p class="librarycard__text">
+            <h3 class="librarycard__title" id="libraryColumnTitle">Get a reader card</h3>
+            <p class="librarycard__text" id="libraryColumnText">
               You will be able to see a reader card after logging into account
               or you can register a new account
             </p>
             <button class="librarycard__button" id="librarycard__registerBtn">Sign Up</button>
             <button class="librarycard__button" id="librarycard__loginBtn">Log in</button>
+            <button class="librarycard__button librarycard__button_hidden" id="librarycardProfileBtn">Profile</button>
           </div>
         </div>
       </section>
