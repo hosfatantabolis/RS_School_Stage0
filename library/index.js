@@ -359,11 +359,12 @@ closeBtns.forEach((button) => {
 });
 const closePopup = (e) => {
   e.target.closest('.popup').classList.remove('popup__open');
-  document.body.removeEventListener('wheel', preventScroll, { passive: false });
+  document.removeEventListener('wheel', preventScroll, { passive: false });
 };
 
 const showPopup = (popup) => {
-  document.body.addEventListener('wheel', preventScroll, { passive: false });
+  console.log("here")
+  document.addEventListener('wheel', preventScroll, { passive: false });
   popup.addEventListener('click', (e)=>{
    if(!e.target.closest('.popup__container')){
     closePopup(e);
@@ -607,6 +608,7 @@ const profilePopupCardNumber = document.getElementById('profilePopupCardNumber')
 const profilePopupVisits = document.getElementById('profilePopupVisits');
 const profilePopupBonuses = document.getElementById('profilePopupBonuses');;
 const profilePopupBooks = document.getElementById('profilePopupBooks');
+const profileBooksList = document.getElementById('profileBooksList');
 
 myProfileBtn.addEventListener('click', ()=>{
   showPopup(profilePopup);
@@ -635,6 +637,10 @@ const setStats = (user) => {
   librarycardInputFields[1].value = `${user.cardNumber}`;
   libraryCardBtn.classList.add('librarycard__form_button_hidden');
   librarycardStats.classList.remove('librarycard__stats_hidden');
+  profileBooksList.innerHTML = '';
+  user.books.forEach((book)=>{
+    profileBooksList.innerHTML += `<li class="profile__list_item">${book.book}, ${book.author}</li>`;
+  })
 }
 
 const hideLibraryColumn = () => {
