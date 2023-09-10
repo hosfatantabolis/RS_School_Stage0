@@ -123,6 +123,13 @@
     margin: 10px 0;
 }
 
+.popup__submit:hover{
+    cursor: pointer;
+    border: 1px solid #BB945F;
+    background: #BB945F;
+    transition: all .5s ease .3s;
+}
+
 .popup__text{
     display: block;
     font-size: 10px;
