@@ -260,17 +260,51 @@ const openDropdown = () => {
   checkLogin(user);
 }
 
-const addButtonListeners = () => {
+const addButtonListeners = (e) => {
   let user = getUserData();
-  document.body.addEventListener('wheel', preventScroll, {
-    passive: false,
-  });
-  if(user.email) {
+  // console.log(user)
+  if(user.email && user.subscription==false) {
     showPopup(buyPopup);
-  } else {
+    document.body.addEventListener('wheel', preventScroll, {
+      passive: false,
+    });
+  } else if(user.subscription==true){
+    const bookName = e.target.closest('.favorites__grid_card ').querySelector('.card__title').textContent;
+    const bookAuthor = e.target.closest('.favorites__grid_card ').querySelector('.card__author').textContent.replace('By ', '');
+    const bookId = e.target.getAttribute('id');
+    let check = user.books.some((item)=>{
+      return (item.book===bookName && item.author===bookAuthor)? true : false
+    })
+    if(!check) user.books = [...user.books, {author: bookAuthor, book: bookName, id: bookId}];
+    updateUserData(user);
+    setButtons();
+  }else {
     showPopup(loginPopup);
+    document.body.addEventListener('wheel', preventScroll, {
+      passive: false,
+    });
   }
   
+}
+
+const setButtons = () => {
+  let user = getUserData();
+  if(user.email) {
+    const bookIds = Array.from(user.books.map(book=> book.id));
+    buyBtns.forEach(button=>{
+      if(bookIds.includes(button.getAttribute('id'))) {
+        button.classList.add('card__button-own');
+        button.disabled = "disabled";
+        button.textContent = 'Own';
+      };
+    })
+  } else {
+    buyBtns.forEach(button=>{
+      button.classList.remove('card__button-own');
+        button.disabled = "";
+        button.textContent = 'Buy';
+    })
+  }
 }
 
 const checkLogin = (user) => {
@@ -280,6 +314,7 @@ const checkLogin = (user) => {
     loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`;
     notLoggedInProfileBtn.style.display = 'none';
     setStats(user);
+    setButtons();
     hideLibraryColumn();
     profilePopupPic.textContent = `${user.firstName[0]}${user.lastName[0]}`;
     profilePopupFullName.textContent = `${user.firstName} ${user.lastName}`;
@@ -299,9 +334,11 @@ const checkLogin = (user) => {
     loggedInProfileBtn.removeAttribute("title");
     showLibraryColumn();
   }
-  
+
   buyBtns.forEach((button) => {
     button.addEventListener('click', addButtonListeners);
+    disableButton(buyFormBtn);
+    removeAllErrors(buyFormErrors);
   })
 }
 
@@ -381,7 +418,8 @@ logOutBtn.addEventListener('click', () => {
   user={};
   checkLogin(user);
   toggleDropdownMenu();
-  showLibraryColumn
+  showLibraryColumn();
+  setButtons();
 });
 
 popupLoginRegisterBtn.addEventListener('click', (e) => {
@@ -484,7 +522,7 @@ signUpForm.addEventListener('submit', (e)=>{
     alert(`User with email ${formValues.email} is already registered! Try another email!`)
     disableButton(signUpFormBtn);
   } else {
-    formValues.books = [], formValues.visits = 0, formValues.bonuses = 0;
+    formValues.books = [], formValues.visits = 0, formValues.bonuses = 0, formValues.subscription = false;
     localStorage.setItem('usersDB', JSON.stringify([...usersDB, formValues]));
     login(formValues);
     signUpForm.reset();
@@ -646,3 +684,25 @@ librarycardForm.addEventListener('submit', (e)=>{
   }
 })
 
+const buyForm = document.getElementById('buyForm');
+const buyFormInputList = Array.from(buyForm.querySelectorAll(validationSettings.inputSelector));
+const buyFormErrors = Array.from(buyForm.querySelectorAll(validationSettings.errorClass));
+const buyFormBtn = document.getElementById('buyFormBtn');
+buyForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  user = getUserData();
+  user.subscription = true;
+  updateUserData(user);
+  closePopup(e);
+  buyForm.reset();
+});
+
+// buyFormInputFields.addEventListener('input', validate)
+
+buyFormInputList.forEach(formElement => {
+  formElement.addEventListener('input', ()=> {
+    validate(buyForm, formElement);
+    changeButtonState(buyFormInputList, buyFormBtn);
+    isInputInvalid(buyFormInputList);
+  })
+})
