@@ -116,12 +116,19 @@
 .librarycard__button:last-of-type {
   margin-right: 0;
 }
-
+.librarycard__button_hidden{
+  display: none;
+}
 .librarycard__button:hover, .librarycard__form_button:hover{
   cursor: pointer;
   border-color: #BB945F;
   background-color: #BB945F;
   transition: background-color 500ms linear;
+}
+
+.librarycard__stats{
+  display: flex;
+  justify-content: center;
 }
 
 .librarycard__stats_hidden{
@@ -146,11 +153,6 @@
   }
   .librarycard__title:not(.librarycard__form_title){
     margin: 20px 0 38px 0;
-  }
-  .librarycard__stats{
-    display: flex;
-    justify-content: center;
-    /* display: none; */
   }
   .librarycard__stats_hidden{
     display: none;
