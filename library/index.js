@@ -201,7 +201,7 @@ autumnRadio.addEventListener('click', () => showSeason(AUTUMN));
 
 //----------------Dropdown Menu----------------
 let user;
-let loggedIn = false;
+// let loggedIn = false;
 let isDropdownMenuShown = false;
 
 const profileBtn = document.getElementById('profileBtn');
@@ -260,6 +260,19 @@ const openDropdown = () => {
   checkLogin(user);
 }
 
+const addButtonListeners = () => {
+  let user = getUserData();
+  document.body.addEventListener('wheel', preventScroll, {
+    passive: false,
+  });
+  if(user.email) {
+    showPopup(buyPopup);
+  } else {
+    showPopup(loginPopup);
+  }
+  
+}
+
 const checkLogin = (user) => {
   if(user.email){
     loggedInProfileBtn.style.display = 'block';
@@ -278,12 +291,18 @@ const checkLogin = (user) => {
     profilePopupCopyBtn.addEventListener('click', ()=>{
       navigator.clipboard.writeText(profilePopupCardNumber.textContent);
     })
+
+    
   } else {
     loggedInProfileBtn.style.display = 'none';
     notLoggedInProfileBtn.style.display = 'block';
     loggedInProfileBtn.removeAttribute("title");
     showLibraryColumn();
   }
+  
+  buyBtns.forEach((button) => {
+    button.addEventListener('click', addButtonListeners);
+  })
 }
 
 // checkLogin(user)
@@ -327,6 +346,7 @@ const popupRegisterLoginBtn = document.getElementById('popupRegisterLoginBtn'); 
 const registerPopup = document.getElementById('registerPopup');
 const loginPopup = document.getElementById('loginPopup');
 const profilePopup = document.getElementById('profilePopup');
+const buyPopup = document.getElementById('buyPopup');
 
 const buyBtns = document.querySelectorAll('.card__button');
 
@@ -378,16 +398,7 @@ popupRegisterLoginBtn.addEventListener('click', (e) => {
   disableButton(loginFormBtn);
 });
 
-if (loggedIn === false) {
-  buyBtns.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      document.body.addEventListener('wheel', preventScroll, {
-        passive: false,
-      });
-      showPopup(loginPopup);
-    });
-  });
-}
+
 
 // ----------------- FORM VALIDATION, REGISTER AND LOGIN ----------------
 const validationSettings = {
