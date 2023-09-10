@@ -82,10 +82,12 @@
   min-height: 555px;
   box-sizing: border-box;
   position: relative;
+  opacity: 1;
+  transition: opacity 0.5s linear;
 }
 
-.favorites__grid_card-spring, .favorites__grid_card-summer, .favorites__grid_card-autumn{
-  display: none;
+.favorites__grid_card-hidden{
+  opacity: 0;
 }
 
 .card__label {
@@ -93,7 +95,7 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 40px; /* 200% */
+  line-height: 40px;
   letter-spacing: 2px;
   text-transform: capitalize;
   margin: 0;
@@ -102,10 +104,9 @@
 .card__label::after {
   content: '';
   position: absolute;
-  bottom: 0; /*position the underline using left and bottom property*/
+  bottom: 0;
   left: 0;
-  /* left: calc(50% - 24px); */
-  width: 60px; /* adjust the width of underline as you like*/
+  width: 60px;
   border-bottom: 1px solid #bb945f;
 }
 
@@ -184,5 +185,20 @@
   .favorites__grid {
     grid-template-columns: 1fr;
     justify-items: center;
+  }
+  .favorites__pick{
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 999;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
