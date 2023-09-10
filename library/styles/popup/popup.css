@@ -15,6 +15,7 @@
 
 .popup__open{
     display: flex;
+    z-index: 30;
 }
 
 .popup__container{
