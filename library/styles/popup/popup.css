@@ -236,6 +236,10 @@
 .profile__list{
     margin: 0 0 40px;
     padding: 0 0 0 30px;
+    max-width: 350px;
+    max-height: 100px;
+    /* overflow-x: scroll; */
+    overflow: scroll;
 }
 
 .profile__list_title{
