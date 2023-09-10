@@ -183,17 +183,6 @@ const showSeason = (season) => {
 
 showSeason(WINTER);
 
-const hideOtherSeasons = (season) => {
-  allCards.forEach((card) => {
-    if (!card.classList.contains('favorites__grid_card-' + season)) {
-      card.classList.add('favorites__grid_card-hidden');
-      setTimeout(() => {
-        card.style.display = 'none';
-      }, 50);
-    }
-  });
-};
-
 winterRadio.addEventListener('click', () => showSeason(WINTER));
 springRadio.addEventListener('click', () => showSeason(SPRING));
 summerRadio.addEventListener('click', () => showSeason(SUMMER));
@@ -201,7 +190,6 @@ autumnRadio.addEventListener('click', () => showSeason(AUTUMN));
 
 //----------------Dropdown Menu----------------
 let user;
-// let loggedIn = false;
 let isDropdownMenuShown = false;
 
 const profileBtn = document.getElementById('profileBtn');
@@ -228,9 +216,7 @@ const closeDropdown = (e) => {
 }
 
 function addEL(e){
-  //  console.log(e.target)
     if(!e.target.closest('.header__dropdown')) {
-      // console.log(e.target.closest('.header__dropdown'));
       toggleDropdownMenu();
       document.removeEventListener('click', addEL, false);
     }
@@ -242,32 +228,21 @@ const openDropdown = () => {
   if (user.email) {
     loggedInMenu.style.display = 'block';
     notLoggedInMenu.style.display = 'none';
-    // loggedInProfileBtn.style.display = 'block';
-    // loggedInProfileBtn.setAttribute("title", `${user.firstName} ${user.lastName}`);
-    // loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`;
-    // notLoggedInProfileBtn.style.display = 'none';
     dropdownTitle.textContent = user.cardNumber;
     dropdownTitle.style.fontSize = '12px';
   } else {
     loggedInMenu.style.display = 'none';
     notLoggedInMenu.style.display = 'block';
-    // loggedInProfileBtn.style.display = 'none';
-    // notLoggedInProfileBtn.style.display = 'block';
     dropdownTitle.textContent = 'Profile';
     dropdownTitle.style.fontSize = '15px';
-    // loggedInProfileBtn.removeAttribute("title");
   }
   checkLogin(user);
 }
 
 const addButtonListeners = (e) => {
   let user = getUserData();
-  // console.log(user)
   if(user.email && user.subscription==false) {
     showPopup(buyPopup);
-    document.body.addEventListener('wheel', preventScroll, {
-      passive: false,
-    });
   } else if(user.subscription==true){
     const bookName = e.target.closest('.favorites__grid_card ').querySelector('.card__title').textContent;
     const bookAuthor = e.target.closest('.favorites__grid_card ').querySelector('.card__author').textContent.replace('By ', '');
@@ -280,9 +255,6 @@ const addButtonListeners = (e) => {
     setButtons();
   }else {
     showPopup(loginPopup);
-    document.body.addEventListener('wheel', preventScroll, {
-      passive: false,
-    });
   }
   
 }
@@ -342,7 +314,6 @@ const checkLogin = (user) => {
   })
 }
 
-// checkLogin(user)
 window.addEventListener('load', function() {
   user = getUserData();
   checkLogin(user);
@@ -513,7 +484,6 @@ signUpForm.addEventListener('submit', (e)=>{
   signUpFormInputList.forEach(item => {
     formValues[(item.id).replace('register-','')] = item.value;
   });
-  // formValues.loggedIn = true;
   formValues.cardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
   const usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
   const hasError = usersDB?.some((user)=>{
@@ -564,19 +534,8 @@ loginFormInputList.forEach(formElement => {
 
 const login = (user) => {
   user.visits += 1;
-  // updateUserData(user);
   localStorage.setItem('activeUser', JSON.stringify(user));
   checkLogin(user);
-  // profilePopupPic.textContent = `${user.firstName[0]}${user.lastName[0]}`;
-  // profilePopupFullName.textContent = `${user.firstName} ${user.lastName}`;
-  // profilePopupVisits.textContent = user.visits;
-  // profilePopupBonuses.textContent = user.bonuses;
-  // profilePopupBooks.textContent = user.books.length;
-  // profilePopupCardNumber.textContent = user.cardNumber;
-  
-  // profilePopupCopyBtn.addEventListener('click', ()=>{
-  //   navigator.clipboard.writeText(profilePopupCardNumber.textContent);
-  // })
 }
 
 const getUserData = () =>{
@@ -702,8 +661,6 @@ buyForm.addEventListener('submit', (e)=>{
   closePopup(e);
   buyForm.reset();
 });
-
-// buyFormInputFields.addEventListener('input', validate)
 
 buyFormInputList.forEach(formElement => {
   formElement.addEventListener('input', ()=> {
