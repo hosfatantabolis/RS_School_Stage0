@@ -335,7 +335,7 @@ const closePopup = (e) => {
 
 const showPopup = (popup) => {
   console.log("here")
-  document.addEventListener('wheel', preventScroll, { passive: false });
+  // document.addEventListener('wheel', preventScroll, { passive: false });
   popup.addEventListener('click', (e)=>{
    if(!e.target.closest('.popup__container')){
     closePopup(e);
