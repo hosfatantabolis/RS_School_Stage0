@@ -266,10 +266,23 @@ const checkLogin = (user) => {
     loggedInProfileBtn.setAttribute("title", `${user.firstName} ${user.lastName}`);
     loggedInProfileBtn.textContent = `${user.firstName[0]}${user.lastName[0]}`;
     notLoggedInProfileBtn.style.display = 'none';
+    setStats(user);
+    hideLibraryColumn();
+    profilePopupPic.textContent = `${user.firstName[0]}${user.lastName[0]}`;
+    profilePopupFullName.textContent = `${user.firstName} ${user.lastName}`;
+    profilePopupVisits.textContent = user.visits;
+    profilePopupBonuses.textContent = user.bonuses;
+    profilePopupBooks.textContent = user.books.length;
+    profilePopupCardNumber.textContent = user.cardNumber;
+    
+    profilePopupCopyBtn.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(profilePopupCardNumber.textContent);
+    })
   } else {
     loggedInProfileBtn.style.display = 'none';
     notLoggedInProfileBtn.style.display = 'block';
     loggedInProfileBtn.removeAttribute("title");
+    showLibraryColumn();
   }
 }
 
@@ -348,6 +361,7 @@ logOutBtn.addEventListener('click', () => {
   user={};
   checkLogin(user);
   toggleDropdownMenu();
+  showLibraryColumn
 });
 
 popupLoginRegisterBtn.addEventListener('click', (e) => {
@@ -503,6 +517,16 @@ const login = (user) => {
   // updateUserData(user);
   localStorage.setItem('activeUser', JSON.stringify(user));
   checkLogin(user);
+  // profilePopupPic.textContent = `${user.firstName[0]}${user.lastName[0]}`;
+  // profilePopupFullName.textContent = `${user.firstName} ${user.lastName}`;
+  // profilePopupVisits.textContent = user.visits;
+  // profilePopupBonuses.textContent = user.bonuses;
+  // profilePopupBooks.textContent = user.books.length;
+  // profilePopupCardNumber.textContent = user.cardNumber;
+  
+  // profilePopupCopyBtn.addEventListener('click', ()=>{
+  //   navigator.clipboard.writeText(profilePopupCardNumber.textContent);
+  // })
 }
 
 const getUserData = () =>{
@@ -538,15 +562,76 @@ const profilePopupBooks = document.getElementById('profilePopupBooks');
 myProfileBtn.addEventListener('click', ()=>{
   showPopup(profilePopup);
   toggleDropdownMenu();
-  profilePopupPic.textContent = `${user.firstName[0]}${user.lastName[0]}`;
-  profilePopupFullName.textContent = `${user.firstName} ${user.lastName}`;
-  profilePopupVisits.textContent = user.visits;
-  profilePopupBonuses.textContent = user.bonuses;
-  profilePopupBooks.textContent = user.books.length;
-  profilePopupCardNumber.textContent = user.cardNumber;
-  
-  profilePopupCopyBtn.addEventListener('click', ()=>{
-    navigator.clipboard.writeText(profilePopupCardNumber.textContent);
-  })
+})
+
+const libraryCardBtn = document.getElementById('libraryCardBtn');
+const librarycardForm = document.getElementById('librarycardForm');
+const librarycardStats = document.getElementById('librarycardStats');
+const librarycardInputFields = Array.from(librarycardForm.querySelectorAll('.librarycard__form_input'));
+const librarycardVisits = document.getElementById('librarycardVisits');
+const librarycardBonuses = document.getElementById('librarycardBonuses');
+const librarycardBooks = document.getElementById('librarycardBooks');
+const libraryColumnTitle = document.getElementById('libraryColumnTitle');
+const librarycardFormTitle = document.getElementById('librarycardFormTitle');
+const libraryColumnText = document.getElementById('libraryColumnText');
+const librarycardProfileBtn = document.getElementById('librarycardProfileBtn');
+
+librarycardProfileBtn.addEventListener('click', () => showPopup(profilePopup))
+
+const setStats = (user) => {
+  librarycardVisits.textContent = user.visits;
+  librarycardBonuses.textContent = user.bonuses;
+  librarycardBooks.textContent = user.books.length;
+  librarycardInputFields[0].value = `${user.firstName} ${user.lastName}`;
+  librarycardInputFields[1].value = `${user.cardNumber}`;
+  libraryCardBtn.classList.add('librarycard__form_button_hidden');
+  librarycardStats.classList.remove('librarycard__stats_hidden');
+}
+
+const hideLibraryColumn = () => {
+  librarycardFormTitle.textContent = 'Your Library card';
+  libraryRegisterBtn.style.display='none';
+  libraryLoginBtn.style.display='none';
+  libraryColumnTitle.textContent = 'Visit your profile';
+  libraryColumnText.textContent = 'With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.';
+  librarycardProfileBtn.classList.remove('librarycard__button_hidden');
+}
+
+const showLibraryColumn = () => {
+  librarycardFormTitle.textContent = 'Find your Library card';
+  libraryRegisterBtn.style.display='';
+  libraryLoginBtn.style.display='';
+  libraryColumnTitle.textContent = 'Get a reader card';
+  libraryColumnText.textContent = 'You will be able to see a reader card after logging into account or you can register a new account';
+  librarycardProfileBtn.classList.add('librarycard__button_hidden');
+
+}
+
+librarycardForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  let formValues = {};
+  user = getUserData();
+  librarycardInputFields.forEach(item => {
+    formValues[(item.id).replace('card-','')] = item.value;
+  });
+   console.log(formValues)
+  let db = JSON.parse(localStorage.getItem('usersDB'));
+  if(!user.email) {
+    console.log('check')
+    let nameForCheck = formValues.name.split(' ');
+    db.forEach(user=>{
+      if(user.firstName===nameForCheck[0] && user.lastName===nameForCheck[1] && user.cardNumber === formValues.number){
+        setStats(user);
+        setTimeout(()=>{
+          librarycardStats.classList.add('librarycard__stats_hidden');
+          libraryCardBtn.classList.remove('librarycard__form_button_hidden');
+          librarycardForm.reset();
+        },5000)
+      }
+    })
+  } else {
+    setStats(user);
+    hideLibraryColumn();
+  }
 })
 
