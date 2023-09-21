@@ -6,10 +6,23 @@
         <title>JS Audio Player</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="./styles/normalize.css">
+        <link rel="stylesheet" href="./styles/index.css">
     </head>
     <body>
-        <audio src="./assets/audio/A-Ha - Forest Fire.mp3" controls></audio>
-        <script src="./index.js" async defer></script>
+        <!-- <audio src="./assets/audio/A-Ha - Forest Fire.mp3" controls></audio> -->
+        <section class="audioPlayer">
+            <div class="audioPlayer__wrapper">
+                <div class="audioPlayer__container">
+                    <div class="audioPlayer__controls">
+                        <button class="audioPlayer__play" id="playBtn"/>
+                        <!-- <button class="audioPlayer__pause" id=""/> -->
+                        <button class="audioPlayer__prev" id="prevBtn"/>
+                        <button class="audioPlayer__next" id="nextBtn"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="./scripts/index.js" type="module" async defer></script>
     </body>
 </html>
