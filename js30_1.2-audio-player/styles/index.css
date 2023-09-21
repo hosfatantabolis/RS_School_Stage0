@@ -1,0 +1,17 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+.audioPlayer{
+    /* width: 100%; */
+    height: 100%;
+    background-image: url('../assets/img/a-ha.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.audioPlayer__wrapper{
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+}
