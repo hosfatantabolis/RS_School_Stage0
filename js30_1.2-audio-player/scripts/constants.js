@@ -25,6 +25,9 @@ export const audioContents = [
     },
 ];
 
+export const audioPlayer = document.getElementById('audioPlayer');
+
+
 export const playBtn = document.getElementById('playBtn');
 export const prevBtn = document.getElementById('prevBtn');
 export const nextBtn = document.getElementById('nextBtn');

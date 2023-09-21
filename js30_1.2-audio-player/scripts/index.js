@@ -1,4 +1,4 @@
-import  {audioContents, playBtn, prevBtn, nextBtn} from './constants.js';
+import  {audioContents, audioPlayer, playBtn, prevBtn, nextBtn} from './constants.js';
 
 console.log(playBtn);
 
@@ -25,6 +25,7 @@ function nextSong() {
     if (position < audioContents.length - 1) position += 1;
     else position = 0;
     audio.src = audioContents[position].src;
+    setSongInfo();
     playAudio();
 }
 
@@ -33,7 +34,12 @@ function prevSong() {
     if (position > 0) position -= 1;
     else position = audioContents.length - 1;
     audio.src = audioContents[position].src;
+    setSongInfo();
     playAudio();
+}
+
+function setSongInfo() {
+    audioPlayer.style.backgroundImage = `url(${audioContents[position].cover})`;
 }
 
 playBtn.addEventListener('click', () => {
