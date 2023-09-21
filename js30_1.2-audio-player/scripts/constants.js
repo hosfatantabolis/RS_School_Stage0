@@ -26,7 +26,7 @@ export const audioContents = [
 ];
 
 export const audioPlayer = document.getElementById('audioPlayer');
-
+export const audioPlayerCover = document.getElementById('audioPlayerCover');
 
 export const playBtn = document.getElementById('playBtn');
 export const prevBtn = document.getElementById('prevBtn');
