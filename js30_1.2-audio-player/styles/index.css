@@ -18,12 +18,28 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .audioPlayer__container{
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 39px 15px rgba(3, 0, 4, 0.41);
+}
 
+.audioPlayer__controls{
+    display: flex;
+    align-items: center;
+    min-height: 15vh;
+    justify-content: space-around;
+    background: rgb(135,128,255);
+    background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(255,102,236,1) 47%, rgba(255,0,0,1) 100%);
+}
+
+.audioPlayer__cover {
+    max-height: 50vh;
+    display: block;
 }
 
 .audioPlayer__button{
+    box-sizing: border-box;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -32,8 +48,8 @@ body {
     background-position: center;
     background-color: transparent;
     transition: all 0.1s ease;
+    /* transition: border 0.3s ease; */
     border: 2px solid;
-    /* background-color: #008CBA; */
 }
 
 .audioPlayer__button:hover{
