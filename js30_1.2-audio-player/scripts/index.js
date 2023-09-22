@@ -8,10 +8,11 @@ import  {
     audioPlayerSong,
     audioPlayerArtist,
     timeline,
-    progressBar
-} from './constants.js';
+    progressBar,
+    currentTime,
+    songLength
 
-console.log(playBtn);
+} from './constants.js';
 
 const audio = new Audio();
 let position = 0;
@@ -19,6 +20,10 @@ let isPlaying = false;
 
 audio.src = audioContents[position].src;
 audio.volume = 0.2;
+
+audio.addEventListener("loadeddata", ()=>{
+    songLength.textContent = convertTime(audio.duration);
+});
 
 console.log(audio.src);
 function playAudio() {
@@ -28,7 +33,6 @@ function playAudio() {
         audio.play();
     }
     isPlaying = !isPlaying;
-    //console.log(audio.currentTime);
 }
 
 function nextSong() {
@@ -77,9 +81,19 @@ timeline.addEventListener("click", e => {
   audio.currentTime = timeToSeek;
 }, false);
 
+function convertTime(n){
+    let seconds = parseInt(n);
+    let minutes = parseInt(seconds / 60);
+    seconds -= minutes * 60;
+    const hours = parseInt(minutes / 60);
+    minutes -= hours * 60;
+    if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+    return `${String(hours).padStart(2, 0)}:${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+}
+
 setInterval(() => {
     progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-    // audioPlayer.querySelector(".time .current").textContent = getTimeCodeFromNum(
-    //   audio.currentTime
-    // );
+    currentTime.textContent = convertTime(
+      audio.currentTime
+    );
   }, 500);

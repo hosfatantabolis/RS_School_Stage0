@@ -31,6 +31,8 @@ export const audioPlayerSong = document.getElementById('audioPlayerSong');
 export const audioPlayerArtist = document.getElementById('audioPlayerArtist');
 export const timeline = document.getElementById("timeline");
 export const progressBar = document.getElementById("elapsed");
+export const currentTime = document.getElementById("currentTime");
+export const songLength = document.getElementById("songLength");
 
 
 export const playBtn = document.getElementById('playBtn');
