@@ -6,7 +6,9 @@ import  {
     nextBtn, 
     audioPlayerCover, 
     audioPlayerSong,
-    audioPlayerArtist
+    audioPlayerArtist,
+    timeline,
+    progressBar
 } from './constants.js';
 
 console.log(playBtn);
@@ -68,3 +70,16 @@ prevBtn.addEventListener('click', () => {
 });
 
 setSongInfo();
+
+timeline.addEventListener("click", e => {
+  const timelineWidth = window.getComputedStyle(timeline).width;
+  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+  audio.currentTime = timeToSeek;
+}, false);
+
+setInterval(() => {
+    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+    // audioPlayer.querySelector(".time .current").textContent = getTimeCodeFromNum(
+    //   audio.currentTime
+    // );
+  }, 500);
