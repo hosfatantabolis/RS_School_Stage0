@@ -1,14 +1,13 @@
 body {
+    box-sizing: border-box;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 50px);
     font-family: 'Inter', sans-serif;
 }
 .audioPlayer{
-    /* width: 100%; */
     box-sizing: border-box;
     height: 100%;
     min-height: 400px;
-    background-image: url('../assets/img/a-ha.jpg');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,8 +34,6 @@ body {
     align-items: center;
     min-height: 15vh;
     justify-content: space-around;
-    /* background: rgb(135,128,255);
-    background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(255,102,236,1) 47%, rgba(255,0,0,1) 100%); */
 }
 
 .audioPlayer__timeline{
@@ -90,7 +87,6 @@ body {
     background-position: center;
     background-color: transparent;
     transition: all 0.1s ease;
-    /* transition: border 0.3s ease; */
     border: 2px solid;
 }
 
@@ -129,15 +125,11 @@ body {
 .audioPlayer__text{
     margin: 0;
     display: inline-block;
-    /* max-width: 50%; */
-}
-
-.audioPlayer__song, .audioPlayer__artist{
-    /* animation: marquee 10s linear infinite; */
+    max-width: 80%;
 }
 
 .audioPlayer__song{
-    font-size: 25px;
+    font-size: 18px;
 }
 
 .audioPlayer__artist{
@@ -145,12 +137,47 @@ body {
     color: rgb(35, 247, 63);
 }
 
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    background-color: #fff;
+    padding: 5px;
+    max-height: 30px;
+    max-width: 1000px;
+}
 
-@keyframes marquee {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
+.footer__text{
+    margin: 0;
+}
+
+.footer__link{
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.footer__link:visited{
+    color: black;
+    text-decoration: none;
+}
+
+.footer__link:hover{
+    cursor: pointer;
+    border-bottom: 1px solid;
+    color: blueviolet;
+}
+
+.footer__logo{
+    min-height: 30px;
+    width: auto;
+    object-fit: cover;
+    transition: background-color 0.5s ease 0.1s;
+}
+
+.footer__logo:hover {
+    cursor: pointer;
+    background-color: rgb(230, 227, 32);
+}
