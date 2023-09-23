@@ -192,9 +192,14 @@ body {
         max-width: 80vw;
         height: auto;
     }
-    @media screen and (aspect-ratio < 1043 / 653) {
-        .audioPlayer__container{
-            min-width: unset;
-        }
+    .audioPlayer__button{
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+@media screen and (orientation: portrait) and (aspect-ratio > 653 / 1043) {
+    .audioPlayer__container{
+        min-width: unset;
     }
 }
