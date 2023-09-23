@@ -196,6 +196,16 @@ body {
         width: 10rem;
         height: 10rem;
     }
+    .audioPlayer__currentTime, .audioPlayer__songLength{
+        font-size: 2rem;
+    }
+
+    .audioPlayer__artist{
+        font-size: 2rem;
+    }
+    .audioPlayer__song{
+        font-size: 3rem;
+    }
 }
 
 @media screen and (orientation: portrait) and (aspect-ratio > 653 / 1043) {
