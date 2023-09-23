@@ -24,6 +24,7 @@ body {
     box-sizing: border-box;
     border-radius: 10px;
     overflow: hidden;
+    /* width: 80vw; */
     box-shadow: 0px 0px 39px 15px rgba(3, 0, 4, 0.41);
     background: rgb(135,128,255);
     background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(255,102,236,1) 47%, rgba(255,0,0,1) 100%);
@@ -180,4 +181,22 @@ body {
 .footer__logo:hover {
     cursor: pointer;
     background-color: rgb(230, 227, 32);
+}
+
+@media screen and (orientation: portrait) {
+    .audioPlayer__container{
+        min-width: 80vw;
+    }
+
+    .audioPlayer__cover{
+        max-width: 80vw;
+        height: auto;
+    }
+    
+}
+
+@media screen and (orientation: portrait) and (aspect-ratio > 653 / 1043) {
+    .audioPlayer__container{
+        min-width: unset;
+    }
 }
