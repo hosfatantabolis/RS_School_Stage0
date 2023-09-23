@@ -182,3 +182,24 @@ body {
     cursor: pointer;
     background-color: rgb(230, 227, 32);
 }
+
+@media screen and (orientation: portrait) {
+    .audioPlayer__container{
+        min-width: 80vw;
+    }
+
+    .audioPlayer__cover{
+        max-width: 80vw;
+        height: auto;
+    }
+    .audioPlayer__button{
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+@media screen and (orientation: portrait) and (aspect-ratio > 653 / 1043) {
+    .audioPlayer__container{
+        min-width: unset;
+    }
+}
