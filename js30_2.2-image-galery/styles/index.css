@@ -1,7 +1,16 @@
+/* body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+} */
 .header{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 10px;
+    min-width: 80%;
+    max-width: 1000px;
 }
 
 .header__input{
@@ -11,6 +20,26 @@
     padding: 5px;
     line-height: 2rem;
     font-size: 1.5rem;
+}
+
+.cardList{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit,282px);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+
+.cardList__image{
+    margin: 0;
+    width: 100%;
+    height: 282px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cardList__item{
+    display: block;
 }
 
 .footer{
