@@ -7,14 +7,17 @@
         <title>Image gallery</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/normalize.css">
         <link rel="stylesheet" href="./styles/index.css">
     </head>
     <body>
         <header class="header">
             <img src="" class="header__logo">
-            <input class="header__input" type="text"></input>
+            <input class="header__input" type="text">
         </header>
-        <main></main>
+        <main class="main">
+            <ul class="cardList" id="cards"></ul>
+        </main>
         <footer class="footer">
             <a href="https://rs.school/js-stage0/" target="_blank" rel="noreferrer">
                 <img class="footer__logo" alt="logo" src="./assets/logo.svg">
@@ -22,6 +25,6 @@
             <a class="footer__link" href="https://github.com/hosfatantabolis" target="_blank" rel="noreferrer">Github: hosfatantabolis</a>
             <p class="footer__text">2023</p>
         </footer>
-        <script src="" async defer></script>
+        <script src="./scripts/index.js" async defer></script>
     </body>
 </html>
