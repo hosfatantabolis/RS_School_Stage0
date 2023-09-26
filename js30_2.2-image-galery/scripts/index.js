@@ -33,18 +33,9 @@ class Api {
 
 const api = new Api;
 
-// const getImages = () => {
-//     api.getImages().then(data => {
-//         // images.push(data)
-//         // console.log(images)
-//         return data
-//     });
-// }
-
-// let images = getImages();
-
-// console.log(images)
 const cardElements = document.querySelector('.cardList');
+const popup = document.getElementById('popup');
+const popupImg = popup.querySelector('img');
 
 api.getImages()
 .then(cards => {
@@ -57,6 +48,13 @@ api.getImages()
         img.alt = `${card.alt_description}`;
         img.classList.add('cardList__image');
         li.append(img);
+        li.addEventListener('click', (e) => {
+          popup.classList.add('popup__open');
+          popupImg.src = e.target.src;
+          popup.addEventListener('click', (e) => {
+           if(e.target !== popupImg) popup.classList.remove('popup__open')
+          })
+        })
         cardElements.append(li);
     })
 })

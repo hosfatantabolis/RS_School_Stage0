@@ -6,6 +6,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 .header{
     display: flex;
@@ -17,16 +18,29 @@ body{
     max-width: 1000px;
 }
 
+.header__logo{
+    max-height: 50px;
+}
+
 .header__input{
     display: block;
-    width: 20%;
+    /* width: 20%; */
+    min-width: 100px;
     height: 2rem;
     padding: 5px;
     line-height: 2rem;
     font-size: 1.5rem;
+    border-radius: 20px;
+}
+
+.main{
+    max-width: 1200px;
+    width: 90%;
 }
 
 .cardList{
+    padding: 0;
+    margin: 0;
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit,282px);
@@ -40,6 +54,13 @@ body{
     height: 282px;
     object-fit: cover;
     object-position: center;
+    transition: all 0.3s ease;
+
+}
+
+.cardList__image:hover{
+    transform: scale(1.03);
+    cursor: pointer;
 }
 
 .cardList__item{
@@ -90,4 +111,45 @@ body{
 .footer__logo:hover {
     cursor: pointer;
     background-color: rgb(230, 227, 32);
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(22, 22, 22, 0.6);
+}
+
+.popup__open{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__image{
+    max-height: 80vh;
+}
+
+.popup__container{
+    position: relative;
+}
+
+.popup__button{
+    position: absolute;
+    top: -41px;
+    right: -41px;
+    width: 41px;
+    height: 41px;
+    background-image: url('../assets/close-button.svg');
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.popup__button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
