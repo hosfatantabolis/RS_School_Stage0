@@ -26,4 +26,26 @@ html{
     border: 1px solid black;
     width: calc(70vh / 3);
     height: calc(70vh / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.cell_x{
+    background-color: green;
+    transition: background-color 0.5s ease;
+}
+
+.cell_x:hover, .cell_o:hover{
+    scale: 1;
+    cursor: not-allowed;
+}
+
+.cell_o{
+    background-color: yellow;
 }
