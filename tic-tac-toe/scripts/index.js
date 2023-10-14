@@ -81,6 +81,7 @@ function resetBoard(){
         lock.classList.add('lock__hidden');
         cell.addEventListener('click', placeFigure);
     });
+    cropLeaderboard();
 }
 
 function computerMove(){
@@ -170,8 +171,8 @@ okBtns.forEach(btn => {
 
 function cropLeaderboard(){
     if(leaderboard.length>10) {
-        leaderboard.shift();
-        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard.slice(0,10)));
+        leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
     }
 }
 
