@@ -41,7 +41,6 @@ cells.forEach(cell => {
 
 function showStartUp(){
     const firstTime = localStorage.getItem('startPopupSeen') || false;
-    console.log(firstTime);
     firstTime? popupDesc.classList.remove('popup_open') : showPopup(popupDesc);
 }
 
@@ -50,7 +49,6 @@ showStartUp();
 function placeFigure(){
     const index = parseInt(this.getAttribute('data-index'));
     xMoves.push(index);
-    console.log('xs: ' + xMoves);
     this.classList.add('cell_x')
     this.removeEventListener('click', placeFigure);
     toggleLockBoard();
@@ -58,9 +56,7 @@ function placeFigure(){
     setTimeout(()=>{
         if(winner==undefined){
                 computerMove();
-                console.log('os: ' + oMoves);
         }else{
-                console.log('Inside placeFigure the winner is ' + winner);
                 const date = getFormattedDate();
                 localStorage.setItem('leaderboard', JSON.stringify([{winner, date}, ...leaderboard]));
                 leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
@@ -111,7 +107,6 @@ function computerMove(){
         
         const winner = checkWin();
         setTimeout(()=>{
-            console.log('Inside computerMove the winner is ' + winner);
             if(winner!=undefined){
                 const date = getFormattedDate();
                 localStorage.setItem('leaderboard', JSON.stringify([{winner, date}, ...leaderboard]));
@@ -146,7 +141,7 @@ function checkWin() {
 
   leaderboardBtn.addEventListener('click', showLeaderboard);
 
-  function closeAllPopups(){
+function closeAllPopups(){
     popup.classList.remove('popup_open');
         popupDesc.classList.remove('popup_open');
         popupResult.classList.remove('popup_open');
@@ -155,39 +150,39 @@ function checkWin() {
             popupDesc.classList.add('popup_hidden');
             popupResult.classList.add('popup_hidden');
         }, 500)
-  }
+}
 
-  popupCloseBtns.forEach((b) =>{
+popupCloseBtns.forEach((b) =>{
     b.addEventListener('click', closeAllPopups)
-  })
+})
 
-  popupStart.addEventListener('click', ()=>{
+popupStart.addEventListener('click', ()=>{
     closeAllPopups();
     localStorage.setItem('startPopupSeen', true);
-  })
+})
 
-  okBtns.forEach(btn => {
+okBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         closeAllPopups();
         resetBoard();
-    })
-  })
+    }) 
+})
 
-  function cropLeaderboard(){
+function cropLeaderboard(){
     if(leaderboard.length>10) {
         leaderboard.shift();
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     }
-  }
+}
 
-  function showPopup(popup){
+function showPopup(popup){
     popup.classList.remove('popup_hidden');
     setTimeout(()=>{
         popup.classList.add('popup_open');
     }, 50)
-  }
+}
   
-  function showLeaderboard(){
+function showLeaderboard(){
     showPopup(popup)
     popupList.innerHTML = '';
     cropLeaderboard();
@@ -213,9 +208,9 @@ function checkWin() {
     }else{
         popupList.innerHTML = "Данные отсутствуют";
     }
-  }
+}
 
-  function getFormattedDate(){
+function getFormattedDate(){
     const date = new Date;
     const days = String(date.getDate()).padStart(2, 0);
     const month = String(date.getMonth()).padStart(2, 0);
@@ -223,6 +218,6 @@ function checkWin() {
     const mins = String(date.getMinutes()).padStart(2, 0);
     const secs = String(date.getSeconds()).padStart(2, 0);
     return `${days}/${month}/${date.getFullYear()} ${hrs}:${mins}:${secs}`
-  }
+}
 
-  resetGameBtn.addEventListener('click', resetBoard)
+resetGameBtn.addEventListener('click', resetBoard)
