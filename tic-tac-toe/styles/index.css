@@ -61,6 +61,7 @@ html{
     background: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #e3dbdb;
     border: 1px solid black;
     width: calc(70vh / 3);
     height: calc(70vh / 3);
