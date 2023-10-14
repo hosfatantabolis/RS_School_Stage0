@@ -221,4 +221,15 @@ function getFormattedDate(){
     return `${days}/${month}/${date.getFullYear()} ${hrs}:${mins}:${secs}`
 }
 
-resetGameBtn.addEventListener('click', resetBoard)
+resetGameBtn.addEventListener('click', resetBoard);
+
+console.log(`Self-check:
+1) Markup +10
+2) Logic +10
+3) Game finish +10
+4) Game result +10
+5) Leaderboard / Stats +10
+6) Animations (popups, hovers, moves)
+
+Overall: 60/60
+`)
