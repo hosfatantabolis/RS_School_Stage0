@@ -49,6 +49,8 @@ html{
 .board {
     min-width: 70vh;
     min-height: 70vh;
+    /* max-width: 70vh;
+    max-height: 70vh; */
     background-color: #73937e;
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -104,6 +106,7 @@ html{
 .footer{
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
     align-items: center;
     margin: auto auto 20px;
     background-color: #fff;
@@ -306,5 +309,22 @@ tbody:nth-child(even) {
     }
     .popup__winner{
         font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header__nav{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .board{
+        min-width: 70vw;
+        min-height: 70vw;
+    }
+    .cell{
+        width: calc(70vw / 3);
+        height: calc(70vw / 3);
     }
 }
