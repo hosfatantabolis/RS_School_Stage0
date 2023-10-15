@@ -323,6 +323,10 @@ tbody:nth-child(even) {
         min-width: 70vw;
         min-height: 70vw;
     }
+    .lock{
+        min-width: 72vw;
+        min-height: 72vw;
+    }
     .cell{
         width: calc(70vw / 3);
         height: calc(70vw / 3);
