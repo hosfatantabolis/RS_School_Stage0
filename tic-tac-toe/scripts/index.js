@@ -14,6 +14,7 @@ const popupStart = document.querySelector('.popup__ok');
 const gameResultText = document.querySelector('.popup__winner');
 const btn = popupResult.querySelector('.popup__button');
 const okBtns = document.querySelectorAll('.popup__submit');
+const popupDescCloseBtn = popupDesc.querySelector('.popup__button');
 
 btn.addEventListener('click', resetBoard);
 
@@ -64,7 +65,7 @@ function placeFigure(){
                 gameResultText.textContent = 'Вы победили в неравной битве! Фирма проживёт ещё немного!'
         }
     }, 500)
-    
+
 }
 
 function generateIndex(){
@@ -94,18 +95,18 @@ function computerMove(){
         showPopup(popupResult);
         gameResultText.textContent = 'Вы не смогли договориться с Сергеем Петровичем. Победила дружба и коньяк.'
         return;
-    } 
+    }
     let index = generateIndex();
     if(xMoves.indexOf(index)!== -1 || oMoves.indexOf(index)!== -1) {
         computerMove()
     } else {
         const element = document.querySelector(`[data-index='${index}']`);
-        
-        element.classList.add('cell_o');        
+
+        element.classList.add('cell_o');
         element.removeEventListener('click', placeFigure);
         oMoves.push(index);
         toggleLockBoard();
-        
+
         const winner = checkWin();
         setTimeout(()=>{
             if(winner!=undefined){
@@ -116,7 +117,7 @@ function computerMove(){
                 showPopup(popupResult)
                 gameResultText.textContent = 'Сергей Петрович Скоробогатько обыграл Вас. Фирма близится к краху!'
                 setTimeout(()=>{
-                    resetBoard();  
+                    resetBoard();
                 }, 500)
             }
         }, 500)
@@ -162,11 +163,15 @@ popupStart.addEventListener('click', ()=>{
     localStorage.setItem('startPopupSeen', true);
 })
 
+popupDescCloseBtn.addEventListener('click', ()=>{
+    localStorage.setItem('startPopupSeen', true);
+})
+
 okBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         closeAllPopups();
         resetBoard();
-    }) 
+    })
 })
 
 function cropLeaderboard(){
@@ -182,7 +187,7 @@ function showPopup(popup){
         popup.classList.add('popup_open');
     }, 50)
 }
-  
+
 function showLeaderboard(){
     showPopup(popup)
     popupList.innerHTML = '';
