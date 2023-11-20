@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tic-tac-toe</title>
+        <link rel="icon" type="image/x-icon" href="./assets/img/favicon-32x32.png">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./styles/normalize.css">
+        <link rel="stylesheet" href="./styles/index.css">
+    </head>
+    <body class="wrapper">
+        <header class="header">
+            <ul class="header__nav">
+                <li class="header__nav_item" id="leaderboardBtn">
+                    Статистика
+                </li>
+                <li class="header__nav_item" id="showStartScreenBtn">
+                    Инфо
+                </li>
+                <li class="header__nav_item" id="resetGameBtn">
+                    Начать заново
+                </li>
+                
+            </ul>
+        </header>
+        <div class="board">
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+            <div class="cell" data-index="9"></div>
+        </div>
+        <div class="lock lock__hidden"></div>
+        <footer class="footer">
+            <a href="https://rs.school/js-stage0/" target="_blank" rel="noreferrer">
+                <img class="footer__logo" alt="logo" src="./assets/img/logo.svg">
+            </a>
+            <a class="footer__link" href="https://github.com/hosfatantabolis" target="_blank" rel="noreferrer">Github: hosfatantabolis</a>
+            <p class="footer__text">2023</p>
+        </footer>
+        <div class="popup popup_stats popup_hidden">
+            <div class="popup__container">
+                <button class="popup__button"></button>
+                <h3 class="popup__title">Статистика подписанных документов</h3>
+                <div class="popup__overflow">
+                    <table class="popup__list"></table>
+                </div>
+            </div>
+        </div>
+        <div class="popup popup_desc popup_hidden">
+            <div class="popup__container popup__container_description">
+                <button class="popup__button"></button>
+                <h3 class="popup__title">Дело №X/О</h3>
+                <p class="popup__text">
+                    Вы один из двух директоров большой фирмы. Соучредитель фирмы - Ваш друг Сергей Петрович Скоробогатько.
+                </p>
+                <p class="popup__text">Он постоянно подписывает новые договора, даже если они убыточны.</p>
+                <p class="popup__text">А также премирует сотрудников, даже если они валяют дурака.</p>
+                <p class="popup__text">Иногда Вам удаётся ему помешать, иногда нет.</p>
+                <p class="popup__text">Всё в Ваших руках.</p>
+                <button class="popup__submit popup__ok">Спасти фирму!</button>
+            </div>
+        </div>
+        <div class="popup popup_gameover popup_hidden">
+            <div class="popup__container">
+                <button class="popup__button"></button>
+                <p class="popup__winner"></p>
+                <button class="popup__submit">ОК</button>
+            </div>
+        </div>
+        <script src="./scripts/index.js" async defer></script>
+    </body>
+</html>
