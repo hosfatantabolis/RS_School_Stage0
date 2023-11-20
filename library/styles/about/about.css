@@ -1,0 +1,119 @@
+.about__paragraph {
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  margin-top: 60px;
+}
+
+.about__wrapper{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.about__list_slider {
+  display: flex; 
+  max-width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 0;
+  transition: all ease 1s;
+}
+
+.about__slider{
+  display: flex;
+  overflow: hidden;
+  margin: 0;
+  max-width: 1400px;
+  max-height: 560px;
+}
+
+.about__arrow{
+  display: none;
+}
+
+.about__slider_image {
+  height: 100%;
+  object-fit: scale-down;
+}
+.about__list_slider-item {
+  margin-right: 25px;
+}
+
+.about__list_slider-item:last-of-type {
+  margin-right: 0;
+}
+
+.about__list_slider-dots {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 0;
+}
+.about__list_slider-dot {
+  width: 16px;
+  height: 16px;
+  background-color: #0c0c0e;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+}
+.about__list_slider-dot-hidden{
+  display: none;
+}
+.about__list_slider-dot::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: -5px;
+  left: -5px;
+}
+.about__list_slider-dot:hover {
+  cursor: pointer;
+  background-color: #BB945F;
+  transition: background-color 200ms linear;
+}
+.about__list_slider-dot:last-of-type {
+  margin-right: 0;
+}
+
+.about__list_slider-dot_active {
+  background-color: #bb945f;
+  transition: background-color 0.5s linear;
+}
+
+@media screen and (max-width: 1024px) {
+  .about__list_slider-item:last-of-type {
+    margin: 0;
+  }
+  .about__slider{
+    margin: 0 25px;
+    max-width: 450px;
+  }
+  .about__list_slider-item{
+    margin: 0;
+  }
+  .about__list_slider-dots{
+    margin-top: 25px;
+  }
+  .about__list_slider-dot-hidden{
+    display: block;
+  }
+  .about__arrow{
+    display: block;
+    margin-top: 42px;
+  }
+  .about__arrow:hover{
+    cursor: pointer;
+  }
+  .about__arrow-inactive{
+    opacity: 0.5;
+  }
+  .about__arrow-inactive:hover{
+    cursor: not-allowed;
+  }
+}
