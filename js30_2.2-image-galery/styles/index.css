@@ -1,0 +1,200 @@
+html{
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.header{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+    padding: 10px;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.header__logo{
+    max-height: 50px;
+}
+
+.header__input{
+    display: block;
+    min-width: 100px;
+    height: 3rem;
+    padding: 5px 15px;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.header__input::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-image: url('../assets/reset.svg');
+    background-position: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header__input::-webkit-search-cancel-button:hover{
+    transform: scale(1.3);
+}
+
+.main{
+    max-width: 1200px;
+    width: 90%;
+}
+
+.cardList{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit,282px);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+
+.cardList__text{
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cardList_empty{
+    display: block;
+}
+
+.cardList__image{
+    margin: 0;
+    width: 100%;
+    height: 282px;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.3s ease;
+
+}
+
+.cardList__image:hover{
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.cardList__item{
+    display: block;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    background-color: #fff;
+    padding: 5px;
+    max-height: 30px;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.footer__text{
+    margin: 0;
+}
+
+.footer__link{
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.footer__link:visited{
+    color: black;
+    text-decoration: none;
+}
+
+.footer__link:hover{
+    cursor: pointer;
+    border-bottom: 1px solid;
+    color: rgb(226, 43, 43);
+}
+
+.footer__logo{
+    min-height: 30px;
+    width: auto;
+    object-fit: cover;
+    transition: background-color 0.5s ease 0.1s;
+}
+
+.footer__logo:hover {
+    cursor: pointer;
+    background-color: rgb(230, 227, 32);
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(22, 22, 22, 0.6);
+}
+
+.popup__open{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__image{
+    max-height: 80vh;
+    max-width: 80vw;
+}
+
+.popup__container{
+    position: relative;
+}
+
+.popup__button{
+    position: absolute;
+    top: -41px;
+    right: -41px;
+    width: 41px;
+    height: 41px;
+    background-image: url('../assets/close-button.svg');
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.popup__button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+    .header{
+        flex-direction: column;
+    }
+    .header__logo{
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .footer{
+        flex-direction: column;
+    }
+    .footer__element{
+        margin-bottom: 10px;
+    }
+}
