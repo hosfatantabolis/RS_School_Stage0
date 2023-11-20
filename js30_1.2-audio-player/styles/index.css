@@ -1,0 +1,215 @@
+body {
+    box-sizing: border-box;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    font-family: 'Inter', sans-serif;
+}
+.audioPlayer{
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 400px;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.audioPlayer__wrapper{
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.audioPlayer__container{
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    /* width: 80vw; */
+    box-shadow: 0px 0px 39px 15px rgba(3, 0, 4, 0.41);
+    background: rgb(135,128,255);
+    background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(255,102,236,1) 47%, rgba(255,0,0,1) 100%);
+}
+
+.audioPlayer__controls{
+    display: flex;
+    align-items: center;
+    min-height: 15vh;
+    justify-content: space-around;
+}
+
+.audioPlayer__timeline{
+    margin: 10px 5px;
+    max-width: 100%;
+    height: 5px;
+    background-color: #fff;
+}
+
+.audioPlayer__progress{
+    width: 0%;
+    height: 100%;
+    transition: 0.25s;
+    background-color: blueviolet;
+    transition: all 0.5s ease;
+}
+
+.audioPlayer__progress:hover, .audioPlayer__timeline:hover{
+    cursor: pointer;
+}
+
+.audioPlayer__progress:hover{
+    background-color:darkslateblue;
+}
+
+.audioPlayer__cover {
+    max-height: 50vh;
+    min-height: 250px;
+    min-width: 100%;
+    display: block;
+}
+
+.audioPlayer__time{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+}
+
+.audioPlayer__currentTime, .audioPlayer__songLength{
+    margin: 0;
+    font-size: 13px;
+}
+
+.audioPlayer__button{
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    transition: all 0.1s ease;
+    border: 2px solid;
+}
+
+.audioPlayer__button:hover{
+    cursor: pointer;
+    background-size: 70%;
+}
+
+.audioPlayer__button:active{
+    cursor: pointer;
+    background-size: 50%;
+}
+
+.audioPlayer__play{
+    background-image: url('../assets/icons/play.svg');
+}
+
+.audioPlayer__pause{
+    background-image: url('../assets/icons/pause.svg');
+}
+
+.audioPlayer__prev{
+    background-image: url('../assets/icons/back.svg');
+}
+
+.audioPlayer__next{
+    background-image: url('../assets/icons/next.svg');
+}
+
+.audioPlayer__texts{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.audioPlayer__text{
+    margin: 0;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.audioPlayer__song{
+    font-size: 18px;
+}
+
+.audioPlayer__artist{
+    font-weight: bold;
+    color: rgb(35, 247, 63);
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    background-color: #fff;
+    padding: 5px;
+    max-height: 30px;
+    max-width: 1000px;
+}
+
+.footer__text{
+    margin: 0;
+}
+
+.footer__link{
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.footer__link:visited{
+    color: black;
+    text-decoration: none;
+}
+
+.footer__link:hover{
+    cursor: pointer;
+    border-bottom: 1px solid;
+    color: blueviolet;
+}
+
+.footer__logo{
+    min-height: 30px;
+    width: auto;
+    object-fit: cover;
+    transition: background-color 0.5s ease 0.1s;
+}
+
+.footer__logo:hover {
+    cursor: pointer;
+    background-color: rgb(230, 227, 32);
+}
+
+@media screen and (orientation: portrait) {
+    .audioPlayer__container{
+        min-width: 80vw;
+    }
+
+    .audioPlayer__cover{
+        max-width: 80vw;
+        height: auto;
+    }
+    .audioPlayer__button{
+        width: 10rem;
+        height: 10rem;
+    }
+    .audioPlayer__currentTime, .audioPlayer__songLength{
+        font-size: 2rem;
+    }
+
+    .audioPlayer__artist{
+        font-size: 2rem;
+    }
+    .audioPlayer__song{
+        font-size: 3rem;
+    }
+}
+
+@media screen and (orientation: portrait) and (aspect-ratio > 653 / 1043) {
+    .audioPlayer__container{
+        min-width: unset;
+    }
+}

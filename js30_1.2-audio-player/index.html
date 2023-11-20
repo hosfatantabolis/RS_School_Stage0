@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>JS Audio Player</title>
+        <link rel="icon" type="image/x-icon" href="./assets/icons/favicon-32x32.png">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./styles/normalize.css">
+        <link rel="stylesheet" href="./styles/index.css">
+    </head>
+    <body>
+        <div class="audioPlayer" id="audioPlayer">
+            <div class="audioPlayer__wrapper">
+                <div class="audioPlayer__container">
+                    <img id="audioPlayerCover" class="audioPlayer__cover" src="#" alt="">
+                    <div>
+                        <div class="audioPlayer__timeline" id="timeline">
+                            <div class="audioPlayer__progress" id="elapsed"></div>
+                        </div>
+                        <div class="audioPlayer__time">
+                            <p class="audioPlayer__currentTime" id="currentTime"></p>
+                            <p class="audioPlayer__songLength" id="songLength"></p>
+                        </div>
+                    </div>
+                    <div class="audioPlayer__controls">
+                        
+                        <button class="audioPlayer__button audioPlayer__prev" id="prevBtn"></button>
+                        <button class="audioPlayer__button audioPlayer__play" id="playBtn"></button>
+                        <button class="audioPlayer__button audioPlayer__next" id="nextBtn"></button>
+                    </div>
+                    <div class="audioPlayer__texts">
+                        <p class="audioPlayer__text audioPlayer__artist" id="audioPlayerArtist"></p>
+                        <p class="audioPlayer__text audioPlayer__song" id="audioPlayerSong"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <a href="https://rs.school/js-stage0/" target="_blank" rel="noreferrer">
+                <img class="footer__logo" alt="logo" src="./assets/icons/logo.svg">
+            </a>
+            <a class="footer__link" href="https://github.com/hosfatantabolis" target="_blank" rel="noreferrer">Github: hosfatantabolis</a>
+            <p class="footer__text">2023</p>
+        </footer>
+        <script src="./scripts/index.js" type="module" async></script>
+    </body>
+</html>
